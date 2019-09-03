@@ -1,0 +1,88 @@
+Error: failed to start containers: pruebaclase
+root@ed-virtual-machine:/home/ed# sudo docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@ed-virtual-machine:/home/ed# sudo docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@ed-virtual-machine:/home/ed# sudo docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@ed-virtual-machine:/home/ed# docker run --name ubuntu_bash --rm -i -t ubuntu bash
+root@bf6c68a32901:/# docker exec -d ubuntu_bash touch /tmp/execWorks
+bash: docker: command not found
+root@bf6c68a32901:/# docker exec -d ubuntu_bash touch /tmp/execWorks
+bash: docker: command not found
+root@bf6c68a32901:/# docker exec -it ubuntu_bash bash
+bash: docker: command not found
+root@bf6c68a32901:/# sudo docker pull debian:stable
+bash: sudo: command not found
+root@bf6c68a32901:/# sudo docker pull debian:testing
+bash: sudo: command not found
+root@bf6c68a32901:/# clear
+
+root@bf6c68a32901:/# exit
+exit
+root@ed-virtual-machine:/home/ed# sudo docker pull debian:stable
+stable: Pulling from library/debian
+6a75cf7ef35e: Pull complete 
+Digest: sha256:6a3ead8cbca86c3c28c5f32d250df9203f7cb939ed07ac6925d7a7a788554911
+Status: Downloaded newer image for debian:stable
+docker.io/library/debian:stable
+root@ed-virtual-machine:/home/ed# sudo docker run --it debian:stable /bin/bash
+unknown flag: --it
+See 'docker run --help'.
+root@ed-virtual-machine:/home/ed# sudo docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@ed-virtual-machine:/home/ed# sudo docker pull debian:stable
+stable: Pulling from library/debian
+Digest: sha256:6a3ead8cbca86c3c28c5f32d250df9203f7cb939ed07ac6925d7a7a788554911
+Status: Image is up to date for debian:stable
+docker.io/library/debian:stable
+root@ed-virtual-machine:/home/ed# sudo docker run --it debian:stable /bin/bash
+unknown flag: --it
+See 'docker run --help'.
+root@ed-virtual-machine:/home/ed# apt install htop
+Leyendo lista de paquetes... Hecho
+Creando árbol de dependencias       
+Leyendo la información de estado... Hecho
+Se instalarán los siguientes paquetes NUEVOS:
+  htop
+0 actualizados, 1 nuevos se instalarán, 0 para eliminar y 530 no actualizados.
+Se necesita descargar 80,0 kB de archivos.
+Se utilizarán 221 kB de espacio de disco adicional después de esta operación.
+Des:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 htop amd64 2.1.0-3 [80,0 kB]
+Descargados 80,0 kB en 2s (35,2 kB/s)
+Seleccionando el paquete htop previamente no seleccionado.
+(Leyendo la base de datos ... 255331 ficheros o directorios instalados actualmente.)
+Preparando para desempaquetar .../htop_2.1.0-3_amd64.deb ...
+Desempaquetando htop (2.1.0-3) ...
+Procesando disparadores para mime-support (3.60ubuntu1) ...
+Procesando disparadores para desktop-file-utils (0.23+linuxmint4) ...
+Procesando disparadores para man-db (2.8.3-2ubuntu0.1) ...
+Procesando disparadores para gnome-menus (3.13.3-11ubuntu1.1) ...
+Configurando htop (2.1.0-3) ...
+root@ed-virtual-machine:/home/ed# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@ed-virtual-machine:/home/ed# sudo docker images
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              a2a15febcdf3        8 days ago          64.2MB
+postgres            latest              c3fe76fef0a6        9 days ago          313MB
+debian              stable              f5356914cf3c        10 days ago         114MB
+hello-world         latest              fce289e99eb9        7 months ago        1.84kB
+root@ed-virtual-machine:/home/ed# 
+root@ed-virtual-machine:/home/ed# python
+Python 2.7.15rc1 (default, Nov 12 2018, 14:31:15) 
+[GCC 7.3.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> esc
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'esc' is not defined
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> 
+

@@ -1,0 +1,316 @@
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting XAUTHORITY=/home/ed/.Xauthority
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting LANG=es_CO.UTF-8
+dbus-update-activation-environment: setting GDM_LANG=es_CO
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting MANDATORY_PATH=/usr/share/gconf/cinnamon.mandatory.path
+dbus-update-activation-environment: setting XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/ed
+dbus-update-activation-environment: setting USER=ed
+dbus-update-activation-environment: setting DESKTOP_SESSION=cinnamon
+dbus-update-activation-environment: setting DEFAULTS_PATH=/usr/share/gconf/cinnamon.default.path
+dbus-update-activation-environment: setting PWD=/home/ed
+dbus-update-activation-environment: setting HOME=/home/ed
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting XDG_SESSION_TYPE=x11
+dbus-update-activation-environment: setting XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/ed/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+dbus-update-activation-environment: setting XDG_SESSION_DESKTOP=cinnamon
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting SHELL=/bin/bash
+dbus-update-activation-environment: setting XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+dbus-update-activation-environment: setting IM_CONFIG_PHASE=1
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting SHLVL=1
+dbus-update-activation-environment: setting LANGUAGE=es_CO:es
+dbus-update-activation-environment: setting GDMSESSION=cinnamon
+dbus-update-activation-environment: setting LOGNAME=ed
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting XDG_RUNTIME_DIR=/run/user/1000
+dbus-update-activation-environment: setting XAUTHORITY=/home/ed/.Xauthority
+dbus-update-activation-environment: setting XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+dbus-update-activation-environment: setting XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+dbus-update-activation-environment: setting _=/usr/bin/dbus-update-activation-environment
+[cinnamon-settings-daemon-smartcard] Failed to start: no se pudo encontrar un controlador de tarjeta inteligente adecuado
+[cinnamon-settings-daemon-smartcard] Failed to start: no se pudo encontrar un controlador de tarjeta inteligente adecuado
+
+(csd-color:2065): color-plugin-WARNING **: 12:11:32.870: failed to get edid: unable to get EDID for output
+
+(csd-color:2065): color-plugin-WARNING **: 12:11:32.910: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(nm-applet:2301): Gtk-WARNING **: 12:11:39.420: Can't set a parent on widget which has a parent
+
+(vmware-user:2304): Gtk-WARNING **: 12:11:40.598: gtk_disable_setlocale() must be called before gtk_init()
+Cjs-Message: 12:11:41.128: JS LOG: About to start Cinnamon
+** Message: 12:11:41.624: nemo-desktop: session is cinnamon, establishing proxy
+Cjs-Message: 12:11:42.342: JS LOG: [LookingGlass/info] Cinnamon.AppSystem.get_default() started in 1208 ms
+Cjs-Message: 12:11:42.437: JS LOG: [LookingGlass/info] loading user theme: /usr/share/themes/Mint-Y-Dark/cinnamon/cinnamon.css
+Cjs-Message: 12:11:42.536: JS LOG: [LookingGlass/info] added icon directory: /usr/share/themes/Mint-Y-Dark/cinnamon
+Cjs-Message: 12:11:43.252: JS LOG: [LookingGlass/info] PlacesManager: Updating devices
+St-Message: 12:11:43.264: cogl npot texture sizes SUPPORTED
+Cjs-Message: 12:11:43.283: JS LOG: [LookingGlass/info] loaded at Mon Sep 02 2019 12:11:43 GMT-0500
+Cjs-Message: 12:11:43.283: JS LOG: Cinnamon started at Mon Sep 02 2019 12:11:43 GMT-0500
+Cjs-Message: 12:11:43.382: JS LOG: [LookingGlass/info] ExtensionSystem started in 2 ms
+Cjs-Message: 12:11:43.383: JS LOG: [LookingGlass/info] DeskletManager started in 2 ms
+Cjs-Message: 12:11:43.383: JS LOG: [LookingGlass/info] SearchProviderManager started in 0 ms
+openGL version 3.3 detected (GL3 Cogl Driver)
+MetaSyncRing disabled: couldn't find required GL extensions, or the minimum safe openGL version was not met
+Cjs-Message: 12:11:43.926: JS LOG: [LookingGlass/info] Loaded applet removable-drives@cinnamon.org in 306 ms
+Cjs-Message: 12:11:43.995: JS LOG: [LookingGlass/info] Loaded applet show-desktop@cinnamon.org in 68 ms
+Cjs-Message: 12:11:44.274: JS LOG: [LookingGlass/info] Loaded applet calendar@cinnamon.org in 278 ms
+Cjs-Message: 12:11:44.325: JS LOG: [LookingGlass/info] Role locked: notifications
+Cjs-Message: 12:11:44.346: JS LOG: [LookingGlass/info] Loaded applet notifications@cinnamon.org in 72 ms
+Cjs-Message: 12:11:44.380: JS LOG: [LookingGlass/info] Role locked: tray
+Cjs-Message: 12:11:44.392: JS LOG: [LookingGlass/info] Loaded applet systray@cinnamon.org in 46 ms
+Cjs-Message: 12:11:44.506: JS LOG: [LookingGlass/info] Loaded applet keyboard@cinnamon.org in 112 ms
+Cjs-Message: 12:11:44.663: JS LOG: [LookingGlass/info] Loaded applet power@cinnamon.org in 156 ms
+Cjs-Message: 12:11:44.814: JS LOG: [LookingGlass/info] Role locked: panellauncher
+Cjs-Message: 12:11:44.942: JS LOG: [LookingGlass/info] Loaded applet grouped-window-list@cinnamon.org in 280 ms
+failed to create drawable
+Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4400001 already in stack
+Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4400001 already in stack
+
+(csd-power:2066): power-plugin-CRITICAL **: 12:11:45.293: abs_to_percentage: assertion 'max > min' failed
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.337: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.344: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.349: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.350: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.354: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.354: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.357: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.358: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.362: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.363: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.366: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.369: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.373: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.374: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.377: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.377: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.380: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.380: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.383: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.384: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.388: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.389: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.392: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.393: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.396: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.397: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.402: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.403: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.407: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.408: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.412: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.413: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.417: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.418: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.422: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.423: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 12:11:45.427: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 12:11:45.429: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 12:11:45.581: JS LOG: [LookingGlass/info] Loaded applet sound@cinnamon.org in 638 ms
+Cjs-Message: 12:11:45.661: JS LOG: [LookingGlass/info] Hiding systray: network
+Cjs-Message: 12:11:45.662: JS LOG: [LookingGlass/info] Hiding systray: network
+Cjs-Message: 12:11:45.678: JS LOG: [LookingGlass/info] Loaded applet network@cinnamon.org in 98 ms
+Cjs-Message: 12:11:47.265: JS LOG: [LookingGlass/info] Loaded applet menu@cinnamon.org in 1586 ms
+Cjs-Message: 12:11:47.268: JS LOG: [LookingGlass/info] AppletManager started in 3984 ms
+Cjs-Message: 12:11:47.280: JS LOG: [LookingGlass/info] Cinnamon took 6148 ms to start
+Cjs-Message: 12:11:47.340: JS LOG: Unknown network device type, is 14
+Cjs-Message: 12:11:47.350: JS LOG: Unknown network device type, is 13
+Cjs-Message: 12:11:47.350: JS LOG: Unknown network device type, is 13
+Nemo-Share-Message: 12:11:51.051: Called "net usershare info" but it failed: La «red compartida» devolvió el error 255: mkdir failed on directory /var/run/samba/msg.lock: Permiso denegado
+net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+Cjs-Message: 12:12:00.209: JS LOG: [LookingGlass/info] Adding systray: mintupdate.py (24x24px)
+Cjs-Message: 12:12:00.211: JS LOG: [LookingGlass/info] Resized mintupdate.py with normalized size (24x24px)
+Cjs-Message: 12:12:03.317: JS LOG: [LookingGlass/info] Adding systray: hexchat (24x24px)
+Cjs-Message: 12:12:03.318: JS LOG: [LookingGlass/info] Resized hexchat with normalized size (24x24px)
+Cjs-Message: 12:13:41.946: JS WARNING: [/usr/share/cinnamon/js/misc/fileUtils.js line 210 > Function 416]: reference to undefined property "instance_id"
+
+(csd-color:2065): color-plugin-WARNING **: 12:13:42.347: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2065): color-plugin-WARNING **: 12:13:42.347: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2065): color-plugin-WARNING **: 12:13:42.350: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+failed to create drawable
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.580: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.580: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 12:57:47.588: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.595: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.595: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 12:57:47.599: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.607: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.607: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 12:57:47.611: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.769: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.779: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 12:57:47.783: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.931: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.931: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 12:57:47.934: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.938: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:47.938: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 12:57:47.944: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:52.981: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 12:57:52.982: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 12:57:52.988: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:18.435: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:18.438: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:18.450: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:18.857: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:18.857: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:18.860: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:18.870: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:18.870: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:18.874: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:19.182: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:19.182: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:19.185: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:20.831: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:20.831: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:20.835: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:20.839: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:20.839: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:20.843: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:21.048: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:21.048: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:21.053: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:21.056: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:21.056: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:21.059: Can't set a parent on widget which has a parent
+
+(cinnamon:2245): Cjs-WARNING **: 14:32:25.129: JS ERROR: TypeError: this._notification is null
+MessageTray.prototype._notificationTimeout@/usr/share/cinnamon/js/ui/messageTray.js:1793:1
+
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.909: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.910: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:26.913: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.920: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.921: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:26.925: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.932: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.932: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:26.937: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.943: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.943: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:26.950: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.957: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:26.957: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:26.960: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.004: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.004: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:27.007: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.013: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.013: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:27.015: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.219: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.219: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:27.223: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.228: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:27.228: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:27.231: Can't set a parent on widget which has a parent
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:28.433: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-CRITICAL **: 14:32:28.433: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2301): Gtk-WARNING **: 14:32:28.435: Can't set a parent on widget which has a parent
+
+(cinnamon:2245): Cjs-WARNING **: 14:32:32.137: JS ERROR: TypeError: this._notification is null
+MessageTray.prototype._notificationTimeout@/usr/share/cinnamon/js/ui/messageTray.js:1793:1
+

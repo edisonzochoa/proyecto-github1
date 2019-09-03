@@ -1,0 +1,4 @@
+T 1567444324 19*	Hablando con 22#linuxmint-help
+T 1567444324 22*	Tema para 22#linuxmint-help es: Official Linux Mint Support Channel |​ All Linux Mint support questions and languages are welcome! Channel Rules: https://goo.gl/mP1Rz1 - for off-topic chat use  #linuxmint-chat | Upgrade Instructions: https://goo.gl/kKiYXh
+T 1567444324 22*	Tema para 22#linuxmint-help puesto por 26nameless!~pikiwedia@linuxmint/team/pikiwedia (24Thu May 30 09:23:16 2019)
+T 1567444324 -18ChanServ-	[#linuxmint-help] Welcome to #linuxmint-help. Channel Rules: https://goo.gl/mP1Rz1. Type /topic to see more. If you need support, state your issue & wait for a response, this may take 5-10 minutes.

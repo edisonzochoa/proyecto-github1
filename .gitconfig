@@ -1,0 +1,10 @@
+[user]
+	name = edisozochoa
+	email = ediandres82@gmail.com
+	mail = ediandres82@gmail.com
+[core]
+	editor = nano
+[merge]
+	tool = vimdiff
+[color]
+	ui = true

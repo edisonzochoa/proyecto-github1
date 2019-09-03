@@ -1,0 +1,19 @@
+**** INICIANDO CONEXIÓN EN Mon Sep  2 12:12:03 2019
+
+sep 02 12:12:03 *	*** Looking up your hostname...
+sep 02 12:12:03 *	*** Looking up your ident...
+sep 02 12:12:03 *	Capacidades soportadas: away-notify extended-join account-notify multi-prefix sasl tls userhost-in-names
+sep 02 12:12:03 *	Capacidades requeridas: away-notify extended-join account-notify multi-prefix userhost-in-names 
+sep 02 12:12:03 *	Capacidades admitidas: away-notify extended-join account-notify multi-prefix userhost-in-names
+sep 02 12:12:03 *	*** Could not resolve your hostname: Domain name not found; using your IP address (200.122.208.2) instead.
+sep 02 12:12:04 *	*** Could not find your ident, using ~ed instead.
+sep 02 12:12:04 *	Welcome to SpotChat!
+**** FINALIZANDO CONEXIÓN EN Mon Sep  2 12:12:04 2019
+
+**** INICIANDO CONEXIÓN EN Mon Sep  2 12:12:04 2019
+
+sep 02 12:12:04 *	Welcome to the SpotChat IRC Network ed!~ed@200.122.208.2
+sep 02 12:12:04 *	Your host is medusa.us.SpotChat.org, running version InspIRCd-2.0
+sep 02 12:12:04 *	This server was created 15:24:37 Apr 19 2019
+sep 02 12:12:04 *	medusa.us.SpotChat.org InspIRCd-2.0 BHIRSWcdghikorswx ACIJKMNOPQRSTYabceghiklmnopqrstvz IJYabeghkloqv
+sep 02 12:12:04 *	AWAYLEN=200 CALLERID=g CASEMAPPING=rfc1459 CHANMODES=Ibeg,k,Jl,ACKMNOPQRSTcimnprstz CHANNELLEN=64 CHANTYPES=# CHARSET=ascii ELIST=MU EXCEPTS=e EXTBAN=,ACNOQRSTUcmz FNC INVEX=I KICKLEN=255 :are supported by this server

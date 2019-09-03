@@ -1,0 +1,151 @@
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting XAUTHORITY=/home/ed/.Xauthority
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting LANG=es_CO.UTF-8
+dbus-update-activation-environment: setting GDM_LANG=es_CO
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting MANDATORY_PATH=/usr/share/gconf/cinnamon.mandatory.path
+dbus-update-activation-environment: setting XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/ed
+dbus-update-activation-environment: setting USER=ed
+dbus-update-activation-environment: setting DESKTOP_SESSION=cinnamon
+dbus-update-activation-environment: setting DEFAULTS_PATH=/usr/share/gconf/cinnamon.default.path
+dbus-update-activation-environment: setting PWD=/home/ed
+dbus-update-activation-environment: setting HOME=/home/ed
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting XDG_SESSION_TYPE=x11
+dbus-update-activation-environment: setting XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/ed/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+dbus-update-activation-environment: setting XDG_SESSION_DESKTOP=cinnamon
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting SHELL=/bin/bash
+dbus-update-activation-environment: setting XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+dbus-update-activation-environment: setting IM_CONFIG_PHASE=1
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting SHLVL=1
+dbus-update-activation-environment: setting LANGUAGE=es_CO:es
+dbus-update-activation-environment: setting GDMSESSION=cinnamon
+dbus-update-activation-environment: setting LOGNAME=ed
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting XDG_RUNTIME_DIR=/run/user/1000
+dbus-update-activation-environment: setting XAUTHORITY=/home/ed/.Xauthority
+dbus-update-activation-environment: setting XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+dbus-update-activation-environment: setting XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+dbus-update-activation-environment: setting _=/usr/bin/dbus-update-activation-environment
+[cinnamon-settings-daemon-smartcard] Failed to start: no se pudo encontrar un controlador de tarjeta inteligente adecuado
+[cinnamon-settings-daemon-smartcard] Failed to start: no se pudo encontrar un controlador de tarjeta inteligente adecuado
+
+(csd-color:2219): color-plugin-WARNING **: 14:25:58.728: failed to get edid: unable to get EDID for output
+
+(csd-color:2219): color-plugin-WARNING **: 14:25:58.795: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(nm-applet:2446): Gtk-WARNING **: 14:26:05.645: Can't set a parent on widget which has a parent
+
+(vmware-user:2451): Gtk-WARNING **: 14:26:08.555: gtk_disable_setlocale() must be called before gtk_init()
+** Message: 14:26:08.891: nemo-desktop: session is cinnamon, establishing proxy
+Cjs-Message: 14:26:09.954: JS LOG: About to start Cinnamon
+Cjs-Message: 14:26:11.144: JS LOG: [LookingGlass/info] Cinnamon.AppSystem.get_default() started in 1184 ms
+Cjs-Message: 14:26:11.224: JS LOG: [LookingGlass/info] loading user theme: /usr/share/themes/Mint-Y-Dark/cinnamon/cinnamon.css
+Cjs-Message: 14:26:11.318: JS LOG: [LookingGlass/info] added icon directory: /usr/share/themes/Mint-Y-Dark/cinnamon
+Cjs-Message: 14:26:11.681: JS LOG: [LookingGlass/info] PlacesManager: Updating devices
+St-Message: 14:26:11.694: cogl npot texture sizes SUPPORTED
+Cjs-Message: 14:26:11.723: JS LOG: [LookingGlass/info] loaded at Fri Aug 30 2019 14:26:11 GMT-0500
+Cjs-Message: 14:26:11.723: JS LOG: Cinnamon started at Fri Aug 30 2019 14:26:11 GMT-0500
+Cjs-Message: 14:26:11.845: JS LOG: [LookingGlass/info] ExtensionSystem started in 0 ms
+Cjs-Message: 14:26:11.846: JS LOG: [LookingGlass/info] DeskletManager started in 2 ms
+Cjs-Message: 14:26:11.846: JS LOG: [LookingGlass/info] SearchProviderManager started in 2 ms
+openGL version 3.3 detected (GL3 Cogl Driver)
+MetaSyncRing disabled: couldn't find required GL extensions, or the minimum safe openGL version was not met
+failed to create drawable
+Cjs-Message: 14:26:12.578: JS LOG: [LookingGlass/info] Loaded applet calendar@cinnamon.org in 454 ms
+Cjs-Message: 14:26:12.692: JS LOG: [LookingGlass/info] Loaded applet removable-drives@cinnamon.org in 112 ms
+Cjs-Message: 14:26:12.822: JS LOG: [LookingGlass/info] Loaded applet show-desktop@cinnamon.org in 128 ms
+Cjs-Message: 14:26:12.943: JS LOG: [LookingGlass/info] Loaded applet keyboard@cinnamon.org in 120 ms
+Cjs-Message: 14:26:12.961: JS LOG: [LookingGlass/info] Role locked: tray
+Cjs-Message: 14:26:12.972: JS LOG: [LookingGlass/info] Loaded applet systray@cinnamon.org in 28 ms
+Cjs-Message: 14:26:13.008: JS LOG: [LookingGlass/info] Role locked: notifications
+Cjs-Message: 14:26:13.132: JS LOG: [LookingGlass/info] Loaded applet notifications@cinnamon.org in 160 ms
+Cjs-Message: 14:26:13.247: JS LOG: [LookingGlass/info] Loaded applet power@cinnamon.org in 114 ms
+Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4600001 already in stack
+Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4600001 already in stack
+Nemo-Share-Message: 14:26:13.391: Called "net usershare info" but it failed: La «red compartida» devolvió el error 255: mkdir failed on directory /var/run/samba/msg.lock: Permiso denegado
+net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+Cjs-Message: 14:26:13.448: JS LOG: [LookingGlass/info] Role locked: panellauncher
+Cjs-Message: 14:26:13.455: JS LOG: [LookingGlass/info] Loaded applet grouped-window-list@cinnamon.org in 208 ms
+
+(csd-power:2220): power-plugin-CRITICAL **: 14:26:13.634: abs_to_percentage: assertion 'max > min' failed
+Cjs-Message: 14:26:14.222: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.224: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.336: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.337: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.344: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.345: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.353: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.354: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.360: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.361: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.369: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.370: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.374: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.375: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.379: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.380: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.384: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.385: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.391: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.392: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.397: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.398: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.404: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.404: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.409: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.410: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.416: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.417: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.421: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.422: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.426: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.427: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.432: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.432: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.437: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.438: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.443: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.444: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.449: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 14:26:14.449: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 14:26:14.584: JS LOG: [LookingGlass/info] Loaded applet sound@cinnamon.org in 1130 ms
+Cjs-Message: 14:26:14.657: JS LOG: [LookingGlass/info] Hiding systray: network
+Cjs-Message: 14:26:14.662: JS LOG: [LookingGlass/info] Hiding systray: network
+Cjs-Message: 14:26:14.688: JS LOG: [LookingGlass/info] Loaded applet network@cinnamon.org in 102 ms
+Cjs-Message: 14:26:16.077: JS LOG: [LookingGlass/info] Loaded applet menu@cinnamon.org in 1388 ms
+Cjs-Message: 14:26:16.080: JS LOG: [LookingGlass/info] AppletManager started in 4356 ms
+Cjs-Message: 14:26:16.089: JS LOG: [LookingGlass/info] Cinnamon took 6134 ms to start
+Cjs-Message: 14:26:16.135: JS LOG: Unknown network device type, is 14
+Cjs-Message: 14:26:16.147: JS LOG: Unknown network device type, is 13
+Cjs-Message: 14:26:16.147: JS LOG: Unknown network device type, is 13
+** Message: 14:26:18.032: nemo-desktop: session is cinnamon, establishing proxy
+Nemo-Share-Message: 14:26:18.641: Called "net usershare info" but it failed: La «red compartida» devolvió el error 255: mkdir failed on directory /var/run/samba/msg.lock: Permiso denegado
+net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+Cjs-Message: 14:26:23.982: JS LOG: [LookingGlass/info] Adding systray: mintupdate.py (24x24px)
+Cjs-Message: 14:26:23.984: JS LOG: [LookingGlass/info] Resized mintupdate.py with normalized size (24x24px)
+Cjs-Message: 14:28:56.454: JS WARNING: [/usr/share/cinnamon/js/misc/fileUtils.js line 210 > Function 416]: reference to undefined property "instance_id"
+
+(csd-color:2219): color-plugin-WARNING **: 14:28:56.603: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2219): color-plugin-WARNING **: 14:28:56.617: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2219): color-plugin-WARNING **: 14:28:56.620: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+failed to create drawable
+
+(nm-applet:2446): Gtk-CRITICAL **: 14:30:06.377: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2446): Gtk-CRITICAL **: 14:30:06.377: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2446): Gtk-WARNING **: 14:30:06.380: Can't set a parent on widget which has a parent
+                                                                                                                                                                                                                                                                                                                                                                                                
