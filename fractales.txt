@@ -1,0 +1,40 @@
+ conjunto de Mandelbrot **
+
+1
+import numpy as np
+2
+>>> import matplotlib.pyplot as plt
+3
+>>> def mandelbrot( h,w, maxit=20 ):
+4
+...     """Returns an image of the Mandelbrot fractal of size (h,w)."""
+5
+...     y,x = np.ogrid[ -1.4:1.4:h*1j, -2:0.8:w*1j ]
+6
+...     c = x+y*1j
+7
+...     z = c
+8
+...     divtime = maxit + np.zeros(z.shape, dtype=int)
+9
+...
+10
+...     for i in range(maxit):
+11
+...         z = z**2 + c
+12
+...         diverge = z*np.conj(z) > 2**2            # who is diverging
+13
+...         div_now = diverge & (divtime==maxit)  # who is diverging now
+14
+...         divtime[div_now] = i                  # note when
+15
+...         z[diverge] = 2                        # avoid diverging too much
+16
+...
+17
+...     return divtime
+18
+>>> plt.imshow(mandelbrot(400,400))
+19
+>>> plt.show()
