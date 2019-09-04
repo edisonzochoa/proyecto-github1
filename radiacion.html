@@ -1,2 +1,19 @@
 CODE PATRON DE RADIACION
 REALIZANDO UNA MODIFICACION EN EL BRACH DEV
+from pyargus.antennaArrayPattern import array_rad_pattern_plot
+from pyargus.tests.patternPlotTest import demo_ULA_plot, demo_UCA_plot
+
+import matplotlib.pyplot as plt
+import numpy as np
+%matplotlib inline
+N = 4  # Number of antenna elements in the antenna system
+d = 0.5  # Antenna element spacing
+
+# Antenna element positions for ULA
+x_coords = np.arange(N)*d - (N-1)*d/2
+y_coords = np.zeros(N)
+array_alignment = np.array((x_coords, y_coords))
+
+rad_pattern = array_rad_pattern_plot(array_alignment = array_alignment)
+w     = np.array([1,-1,1,-1],dtype = complex)
+rad_pattern = array_rad_pattern_plot(w=w, array_alignment = array_alignment)
