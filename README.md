@@ -3,3 +3,4 @@ En este proyecto se busca diseñar antenas de microcinta para la captacion y tra
 ! [texto alternativo] (screenshots /https://github.com/edisonzochoa/proyecto-github1/issues/3 )
 
 https://github.com/edisonzochoa/proyecto-github1/issues/3
+https://github.com/edisonzochoa/proyecto-github1/issues/3
