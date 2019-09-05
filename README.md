@@ -1,5 +1,6 @@
 # proyecto-github1
 En este proyecto se busca diseñar antenas de microcinta para la captacion y transferencia de energia por medio inalambrico.
+para conocer la potencia que recibe una antena microcinta se utiliza un sistema back-to-back y una señal de tono RF generada a 2.45GHZ desde un puerto USRP y transmitido utilizando una antena monopolo.
 
 
 
