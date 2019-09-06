@@ -1,0 +1,11 @@
+8
+
+https://github.uptodown.com/javascript/
+https://github.uptodown.com/javascript/sw.js
+true
+{8a103a63-158c-489a-b498-b91a5064fb7f}
+0
+1567526123037174
+1567526123039823
+1567526122601443
+#

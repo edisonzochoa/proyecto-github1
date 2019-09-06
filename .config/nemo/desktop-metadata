@@ -1,16 +1,16 @@
 [desktop-monitor-0]
 nemo-icon-view-keep-aligned=true
 nemo-icon-view-auto-layout=true
-nemo-icon-view-layout-timestamp=1567444311
+nemo-icon-view-layout-timestamp=1567601862
 
 [computer]
-nemo-icon-position-timestamp=1567444423
+nemo-icon-position-timestamp=1567601864
 nemo-icon-position=74,19
 monitor=0
 icon-scale=1
 
 [home]
-nemo-icon-position-timestamp=1567444423
+nemo-icon-position-timestamp=1567601864
 nemo-icon-position=74,119
 monitor=0
 icon-scale=1
@@ -22,7 +22,7 @@ icon-scale=1
 nemo-icon-position-timestamp=1565639256
 
 [Linux Mint 19.1 Cinnamon 64-bit.volume]
-nemo-icon-position-timestamp=1567444423
+nemo-icon-position-timestamp=1567601864
 nemo-icon-position=74,219
 monitor=0
 icon-scale=1

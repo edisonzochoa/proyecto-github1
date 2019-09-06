@@ -33,119 +33,273 @@ dbus-update-activation-environment: setting XDG_SESSION_PATH=/org/freedesktop/Di
 dbus-update-activation-environment: setting XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
 dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 dbus-update-activation-environment: setting _=/usr/bin/dbus-update-activation-environment
+
+(csd-color:2019): color-plugin-WARNING **: 10:25:58.673: failed to get edid: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 10:25:58.818: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
 [cinnamon-settings-daemon-smartcard] Failed to start: no se pudo encontrar un controlador de tarjeta inteligente adecuado
 [cinnamon-settings-daemon-smartcard] Failed to start: no se pudo encontrar un controlador de tarjeta inteligente adecuado
 
-(csd-color:2219): color-plugin-WARNING **: 14:25:58.728: failed to get edid: unable to get EDID for output
+(nm-applet:2238): Gtk-WARNING **: 10:26:04.208: Can't set a parent on widget which has a parent
 
-(csd-color:2219): color-plugin-WARNING **: 14:25:58.795: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
-
-(nm-applet:2446): Gtk-WARNING **: 14:26:05.645: Can't set a parent on widget which has a parent
-
-(vmware-user:2451): Gtk-WARNING **: 14:26:08.555: gtk_disable_setlocale() must be called before gtk_init()
-** Message: 14:26:08.891: nemo-desktop: session is cinnamon, establishing proxy
-Cjs-Message: 14:26:09.954: JS LOG: About to start Cinnamon
-Cjs-Message: 14:26:11.144: JS LOG: [LookingGlass/info] Cinnamon.AppSystem.get_default() started in 1184 ms
-Cjs-Message: 14:26:11.224: JS LOG: [LookingGlass/info] loading user theme: /usr/share/themes/Mint-Y-Dark/cinnamon/cinnamon.css
-Cjs-Message: 14:26:11.318: JS LOG: [LookingGlass/info] added icon directory: /usr/share/themes/Mint-Y-Dark/cinnamon
-Cjs-Message: 14:26:11.681: JS LOG: [LookingGlass/info] PlacesManager: Updating devices
-St-Message: 14:26:11.694: cogl npot texture sizes SUPPORTED
-Cjs-Message: 14:26:11.723: JS LOG: [LookingGlass/info] loaded at Fri Aug 30 2019 14:26:11 GMT-0500
-Cjs-Message: 14:26:11.723: JS LOG: Cinnamon started at Fri Aug 30 2019 14:26:11 GMT-0500
-Cjs-Message: 14:26:11.845: JS LOG: [LookingGlass/info] ExtensionSystem started in 0 ms
-Cjs-Message: 14:26:11.846: JS LOG: [LookingGlass/info] DeskletManager started in 2 ms
-Cjs-Message: 14:26:11.846: JS LOG: [LookingGlass/info] SearchProviderManager started in 2 ms
+(vmware-user:2243): Gtk-WARNING **: 10:26:05.147: gtk_disable_setlocale() must be called before gtk_init()
+Cjs-Message: 10:26:06.190: JS LOG: About to start Cinnamon
+** Message: 10:26:06.512: nemo-desktop: session is cinnamon, establishing proxy
+Cjs-Message: 10:26:07.050: JS LOG: [LookingGlass/info] Cinnamon.AppSystem.get_default() started in 854 ms
+Cjs-Message: 10:26:07.107: JS LOG: [LookingGlass/info] loading user theme: /usr/share/themes/Mint-Y-Dark/cinnamon/cinnamon.css
+Cjs-Message: 10:26:07.191: JS LOG: [LookingGlass/info] added icon directory: /usr/share/themes/Mint-Y-Dark/cinnamon
+Cjs-Message: 10:26:07.677: JS LOG: [LookingGlass/info] PlacesManager: Updating devices
+St-Message: 10:26:07.693: cogl npot texture sizes SUPPORTED
+Cjs-Message: 10:26:07.752: JS LOG: [LookingGlass/info] loaded at Tue Sep 03 2019 10:26:07 GMT-0500
+Cjs-Message: 10:26:07.753: JS LOG: Cinnamon started at Tue Sep 03 2019 10:26:07 GMT-0500
+Cjs-Message: 10:26:07.892: JS LOG: [LookingGlass/info] ExtensionSystem started in 2 ms
+Cjs-Message: 10:26:07.893: JS LOG: [LookingGlass/info] DeskletManager started in 2 ms
+Cjs-Message: 10:26:07.893: JS LOG: [LookingGlass/info] SearchProviderManager started in 0 ms
 openGL version 3.3 detected (GL3 Cogl Driver)
 MetaSyncRing disabled: couldn't find required GL extensions, or the minimum safe openGL version was not met
 failed to create drawable
-Cjs-Message: 14:26:12.578: JS LOG: [LookingGlass/info] Loaded applet calendar@cinnamon.org in 454 ms
-Cjs-Message: 14:26:12.692: JS LOG: [LookingGlass/info] Loaded applet removable-drives@cinnamon.org in 112 ms
-Cjs-Message: 14:26:12.822: JS LOG: [LookingGlass/info] Loaded applet show-desktop@cinnamon.org in 128 ms
-Cjs-Message: 14:26:12.943: JS LOG: [LookingGlass/info] Loaded applet keyboard@cinnamon.org in 120 ms
-Cjs-Message: 14:26:12.961: JS LOG: [LookingGlass/info] Role locked: tray
-Cjs-Message: 14:26:12.972: JS LOG: [LookingGlass/info] Loaded applet systray@cinnamon.org in 28 ms
-Cjs-Message: 14:26:13.008: JS LOG: [LookingGlass/info] Role locked: notifications
-Cjs-Message: 14:26:13.132: JS LOG: [LookingGlass/info] Loaded applet notifications@cinnamon.org in 160 ms
-Cjs-Message: 14:26:13.247: JS LOG: [LookingGlass/info] Loaded applet power@cinnamon.org in 114 ms
-Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4600001 already in stack
-Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4600001 already in stack
-Nemo-Share-Message: 14:26:13.391: Called "net usershare info" but it failed: La «red compartida» devolvió el error 255: mkdir failed on directory /var/run/samba/msg.lock: Permiso denegado
+Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4400001 already in stack
+Cinnamon warning: Log level 16: STACK_OP_ADD: window 0x4400001 already in stack
+Cjs-Message: 10:26:08.627: JS LOG: [LookingGlass/info] Loaded applet calendar@cinnamon.org in 384 ms
+Cjs-Message: 10:26:08.693: JS LOG: [LookingGlass/info] Loaded applet show-desktop@cinnamon.org in 66 ms
+Cjs-Message: 10:26:08.793: JS LOG: [LookingGlass/info] Role locked: notifications
+Cjs-Message: 10:26:08.813: JS LOG: [LookingGlass/info] Loaded applet notifications@cinnamon.org in 118 ms
+Cjs-Message: 10:26:08.830: JS LOG: [LookingGlass/info] Role locked: tray
+Cjs-Message: 10:26:08.842: JS LOG: [LookingGlass/info] Loaded applet systray@cinnamon.org in 30 ms
+Cjs-Message: 10:26:08.912: JS LOG: [LookingGlass/info] Loaded applet removable-drives@cinnamon.org in 68 ms
+Cjs-Message: 10:26:08.999: JS LOG: [LookingGlass/info] Loaded applet keyboard@cinnamon.org in 86 ms
+Cjs-Message: 10:26:09.077: JS LOG: [LookingGlass/info] Loaded applet power@cinnamon.org in 78 ms
+Cjs-Message: 10:26:09.233: JS LOG: [LookingGlass/info] Role locked: panellauncher
+Cjs-Message: 10:26:09.307: JS LOG: [LookingGlass/info] Loaded applet grouped-window-list@cinnamon.org in 228 ms
+
+(csd-power:2020): power-plugin-CRITICAL **: 10:26:09.411: abs_to_percentage: assertion 'max > min' failed
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.763: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.771: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.777: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.778: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.785: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.787: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.793: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.793: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.801: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.802: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.807: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.809: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.813: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.814: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.819: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.820: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.824: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.824: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.829: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.829: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.835: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.837: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.840: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.840: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.843: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.843: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.846: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.846: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.850: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.851: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.854: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.854: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.857: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.857: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.860: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.861: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cinnamon warning: Log level 16: cinnamon tray: icon app window is gone
+Cjs-Message: 10:26:09.864: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
+Cjs-Message: 10:26:09.865: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
+Cjs-Message: 10:26:09.980: JS LOG: [LookingGlass/info] Loaded applet sound@cinnamon.org in 674 ms
+Cjs-Message: 10:26:10.095: JS LOG: [LookingGlass/info] Hiding systray: network
+Cjs-Message: 10:26:10.097: JS LOG: [LookingGlass/info] Hiding systray: network
+Cjs-Message: 10:26:10.111: JS LOG: [LookingGlass/info] Loaded applet network@cinnamon.org in 130 ms
+Cjs-Message: 10:26:10.255: JS LOG: Unknown network device type, is 14
+Cjs-Message: 10:26:10.269: JS LOG: Unknown network device type, is 13
+Cjs-Message: 10:26:10.269: JS LOG: Unknown network device type, is 13
+Cjs-Message: 10:26:11.691: JS LOG: [LookingGlass/info] Loaded applet menu@cinnamon.org in 1580 ms
+Cjs-Message: 10:26:11.692: JS LOG: [LookingGlass/info] AppletManager started in 3938 ms
+Cjs-Message: 10:26:11.701: JS LOG: [LookingGlass/info] Cinnamon took 5510 ms to start
+Nemo-Share-Message: 10:26:14.923: Called "net usershare info" but it failed: La «red compartida» devolvió el error 255: mkdir failed on directory /var/run/samba/msg.lock: Permiso denegado
 net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
 Please ask your system administrator to enable user sharing.
 
-Cjs-Message: 14:26:13.448: JS LOG: [LookingGlass/info] Role locked: panellauncher
-Cjs-Message: 14:26:13.455: JS LOG: [LookingGlass/info] Loaded applet grouped-window-list@cinnamon.org in 208 ms
+Cjs-Message: 10:26:24.187: JS LOG: [LookingGlass/info] Adding systray: mintupdate.py (24x24px)
+Cjs-Message: 10:26:24.190: JS LOG: [LookingGlass/info] Resized mintupdate.py with normalized size (24x24px)
+Cjs-Message: 10:26:48.121: JS WARNING: [/usr/share/cinnamon/js/misc/fileUtils.js line 210 > Function 416]: reference to undefined property "instance_id"
 
-(csd-power:2220): power-plugin-CRITICAL **: 14:26:13.634: abs_to_percentage: assertion 'max > min' failed
-Cjs-Message: 14:26:14.222: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.224: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.336: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.337: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.344: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.345: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.353: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.354: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.360: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.361: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.369: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.370: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.374: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.375: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.379: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.380: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.384: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.385: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.391: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.392: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.397: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.398: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.404: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.404: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.409: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.410: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.416: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.417: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.421: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.422: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.426: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.427: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.432: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.432: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.437: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.438: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.443: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.444: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.449: JS LOG: [LookingGlass/info] Adding systray: network (24x24px)
-Cjs-Message: 14:26:14.449: JS LOG: [LookingGlass/info] Resized network with normalized size (24x24px)
-Cjs-Message: 14:26:14.584: JS LOG: [LookingGlass/info] Loaded applet sound@cinnamon.org in 1130 ms
-Cjs-Message: 14:26:14.657: JS LOG: [LookingGlass/info] Hiding systray: network
-Cjs-Message: 14:26:14.662: JS LOG: [LookingGlass/info] Hiding systray: network
-Cjs-Message: 14:26:14.688: JS LOG: [LookingGlass/info] Loaded applet network@cinnamon.org in 102 ms
-Cjs-Message: 14:26:16.077: JS LOG: [LookingGlass/info] Loaded applet menu@cinnamon.org in 1388 ms
-Cjs-Message: 14:26:16.080: JS LOG: [LookingGlass/info] AppletManager started in 4356 ms
-Cjs-Message: 14:26:16.089: JS LOG: [LookingGlass/info] Cinnamon took 6134 ms to start
-Cjs-Message: 14:26:16.135: JS LOG: Unknown network device type, is 14
-Cjs-Message: 14:26:16.147: JS LOG: Unknown network device type, is 13
-Cjs-Message: 14:26:16.147: JS LOG: Unknown network device type, is 13
-** Message: 14:26:18.032: nemo-desktop: session is cinnamon, establishing proxy
-Nemo-Share-Message: 14:26:18.641: Called "net usershare info" but it failed: La «red compartida» devolvió el error 255: mkdir failed on directory /var/run/samba/msg.lock: Permiso denegado
-net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
-Please ask your system administrator to enable user sharing.
+(csd-color:2019): color-plugin-WARNING **: 10:26:48.282: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
 
-Cjs-Message: 14:26:23.982: JS LOG: [LookingGlass/info] Adding systray: mintupdate.py (24x24px)
-Cjs-Message: 14:26:23.984: JS LOG: [LookingGlass/info] Resized mintupdate.py with normalized size (24x24px)
-Cjs-Message: 14:28:56.454: JS WARNING: [/usr/share/cinnamon/js/misc/fileUtils.js line 210 > Function 416]: reference to undefined property "instance_id"
+(csd-color:2019): color-plugin-WARNING **: 10:26:48.283: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
 
-(csd-color:2219): color-plugin-WARNING **: 14:28:56.603: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
-
-(csd-color:2219): color-plugin-WARNING **: 14:28:56.617: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
-
-(csd-color:2219): color-plugin-WARNING **: 14:28:56.620: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+(csd-color:2019): color-plugin-WARNING **: 10:26:48.286: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
 failed to create drawable
 
-(nm-applet:2446): Gtk-CRITICAL **: 14:30:06.377: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+(csd-color:2019): color-plugin-WARNING **: 10:32:51.845: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
 
-(nm-applet:2446): Gtk-CRITICAL **: 14:30:06.377: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+(csd-color:2019): color-plugin-WARNING **: 10:32:51.848: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
 
-(nm-applet:2446): Gtk-WARNING **: 14:30:06.380: Can't set a parent on widget which has a parent
-                                                                                                                                                                                                                                                                                                                                                                                                
+(csd-color:2019): color-plugin-WARNING **: 10:32:51.849: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+failed to create drawable
+
+(csd-color:2019): color-plugin-WARNING **: 10:36:29.013: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 10:36:29.018: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 10:36:29.019: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:28.818: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:28.819: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:28.984: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:28.997: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:28.997: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:28.999: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:29.112: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:29.112: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:29.115: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:29.272: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:29.272: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:29.276: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:29.409: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:29.409: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:29.412: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:30.349: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:30.349: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:30.357: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:30.562: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:30.564: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:30.567: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:30.575: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:30.575: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:30.578: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.653: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.654: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:36.656: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.812: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.813: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:36.818: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.831: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.831: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:36.834: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.858: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:36.858: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:36.862: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.014: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.014: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:37.018: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.082: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.082: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:37.089: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.094: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.094: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:37.098: Can't set a parent on widget which has a parent
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.206: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-CRITICAL **: 13:02:37.206: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nm-applet:2238): Gtk-WARNING **: 13:02:37.211: Can't set a parent on widget which has a parent
+
+(cinnamon:2184): Cjs-WARNING **: 13:02:41.875: JS ERROR: TypeError: this._notification is null
+MessageTray.prototype._notificationTimeout@/usr/share/cinnamon/js/ui/messageTray.js:1793:1
+
+
+(csd-color:2019): color-plugin-WARNING **: 16:44:20.727: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:44:20.759: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:44:20.761: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+failed to create drawable
+failed to create drawable
+
+(csd-color:2019): color-plugin-WARNING **: 16:44:27.096: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:44:27.101: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:44:27.108: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:54:06.083: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:54:06.095: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:54:06.097: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+failed to create drawable
+failed to create drawable
+
+(csd-color:2019): color-plugin-WARNING **: 16:54:11.389: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:54:11.390: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(csd-color:2019): color-plugin-WARNING **: 16:54:11.394: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+failed to create drawable
+Gtk-Message: 17:45:16.077: GtkDialog mapped without a transient parent. This is discouraged.
+cinnamon-session[1910]: WARNING: t+25232,33076s: Playing logout sound '/usr/share/mint-artwork/sounds/logout.ogg'
+cinnamon-session[1910]: WARNING: t+25233,35883s: Finished playing logout sound
+cinnamon-session[1910]: WARNING: t+25233,35896s: Resuming logout sequence...
+cinnamon-session[1910]: GLib-GIO-CRITICAL: t+25234,39443s: g_dbus_connection_call_sync_internal: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+cinnamon-session[1910]: WARNING: t+25234,39464s: Requesting system shutdown...
+cinnamon-session[1910]: WARNING: t+25234,39481s: Attempting to shutdown using systemd...

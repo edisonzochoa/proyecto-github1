@@ -1,0 +1,378 @@
+/*
+
+File: AC_QuickTime.js
+
+Abstract: This file contains functions to generate OBJECT and EMBED tags for QuickTime content.
+
+Version: <1.2>
+
+Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
+Computer, Inc. ("Apple") in consideration of your agreement to the
+following terms, and your use, installation, modification or
+redistribution of this Apple software constitutes acceptance of these
+terms.  If you do not agree with these terms, please do not use,
+install, modify or redistribute this Apple software.
+
+In consideration of your agreement to abide by the following terms, and
+subject to these terms, Apple grants you a personal, non-exclusive
+license, under Apple's copyrights in this original Apple software (the
+"Apple Software"), to use, reproduce, modify and redistribute the Apple
+Software, with or without modifications, in source and/or binary forms;
+provided that if you redistribute the Apple Software in its entirety and
+without modifications, you must retain this notice and the following
+text and disclaimers in all such redistributions of the Apple Software.
+Neither the name, trademarks, service marks or logos of Apple Computer,
+Inc. may be used to endorse or promote products derived from the Apple
+Software without specific prior written permission from Apple.  Except
+as expressly stated in this notice, no other rights or licenses, express
+or implied, are granted by Apple herein, including but not limited to
+any patent rights that may be infringed by your derivative works or by
+other works in which the Apple Software may be incorporated.
+
+The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
+MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
+THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
+FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
+OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
+
+IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
+OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
+MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
+AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
+STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+Copyright Â© 2006-2007 Apple Computer, Inc., All Rights Reserved
+
+*/
+
+/*
+ * This file contains functions to generate OBJECT and EMBED tags for QuickTime content.
+ */
+
+/************** LOCALIZABLE GLOBAL VARIABLES ****************/
+
+var gArgCountErr =	'The "%%" function requires an even number of arguments.'
+				+	'\nArguments should be in the form "atttributeName", "attributeValue", ...';
+
+/******************** END LOCALIZABLE **********************/
+
+var gTagAttrs				= null;
+var gQTGeneratorVersion		= 1.2;
+var gQTBehaviorID			= "qt_event_source";
+var gQTEventsEnabled		= false;
+
+function AC_QuickTimeVersion()	{ return gQTGeneratorVersion; }
+
+function _QTComplain(callingFcnName, errMsg)
+{
+    errMsg = errMsg.replace("%%", callingFcnName);
+	alert(errMsg);
+}
+
+function _QTIsMSIE()
+{
+    var ua = navigator.userAgent.toLowerCase();
+	var msie = /msie/.test(ua) && !/opera/.test(ua);
+
+	return msie;
+}
+
+
+function _QTGenerateBehavior()
+{
+	return objTag = '<!--[if IE]>'
+				 + '<object id="' + gQTBehaviorID + '" classid="clsid:CB927D12-4FF7-4a9e-A169-56E4B8A75598"></object>'
+				 + '<![endif]-->';
+}
+
+function _QTPageHasBehaviorObject(callingFcnName, args)
+{
+	var haveBehavior = false;
+	var objects = document.getElementsByTagName('object');
+
+	for ( var ndx = 0, obj; obj = objects[ndx]; ndx++ )
+	{
+		if ( obj.getAttribute('classid') == "clsid:CB927D12-4FF7-4a9e-A169-56E4B8A75598" )
+		{
+			if ( obj.getAttribute('id') == gQTBehaviorID )
+				haveBehavior = false;
+			break;
+		}
+	}
+
+	return haveBehavior;
+}
+
+
+function _QTShouldInsertBehavior()
+{
+	var		shouldDo = false;
+
+	if ( gQTEventsEnabled && _QTIsMSIE() && !_QTPageHasBehaviorObject() )
+		shouldDo = true;
+
+	return shouldDo;
+}
+
+
+function _QTAddAttribute(prefix, slotName, tagName)
+{
+	var		value;
+
+	value = gTagAttrs[prefix + slotName];
+	if ( null == value )
+		value = gTagAttrs[slotName];
+
+	if ( null != value )
+	{
+		if ( 0 == slotName.indexOf(prefix) && (null == tagName) )
+			tagName = slotName.substring(prefix.length);
+		if ( null == tagName )
+			tagName = slotName;
+		return ' ' + tagName + '="' + value + '"';
+	}
+	else
+		return "";
+}
+
+function _QTAddObjectAttr(slotName, tagName)
+{
+	// don't bother if it is only for the embed tag
+	if ( 0 == slotName.indexOf("emb#") )
+		return "";
+
+	if ( 0 == slotName.indexOf("obj#") && (null == tagName) )
+		tagName = slotName.substring(4);
+
+	return _QTAddAttribute("obj#", slotName, tagName);
+}
+
+function _QTAddEmbedAttr(slotName, tagName)
+{
+	// don't bother if it is only for the object tag
+	if ( 0 == slotName.indexOf("obj#") )
+		return "";
+
+	if ( 0 == slotName.indexOf("emb#") && (null == tagName) )
+		tagName = slotName.substring(4);
+
+	return _QTAddAttribute("emb#", slotName, tagName);
+}
+
+
+function _QTAddObjectParam(slotName, generateXHTML)
+{
+	var		paramValue;
+	var		paramStr = "";
+	var		endTagChar = (generateXHTML) ? ' />' : '>';
+
+	if ( -1 == slotName.indexOf("emb#") )
+	{
+		// look for the OBJECT-only param first. if there is none, look for a generic one
+		paramValue = gTagAttrs["obj#" + slotName];
+		if ( null == paramValue )
+			paramValue = gTagAttrs[slotName];
+
+		if ( 0 == slotName.indexOf("obj#") )
+			slotName = slotName.substring(4);
+
+		if ( null != paramValue )
+			paramStr = '<param name="' + slotName + '" value="' + paramValue + '"' + endTagChar;
+	}
+
+	return paramStr;
+}
+
+function _QTDeleteTagAttrs()
+{
+	for ( var ndx = 0; ndx < arguments.length; ndx++ )
+	{
+		var attrName = arguments[ndx];
+		delete gTagAttrs[attrName];
+		delete gTagAttrs["emb#" + attrName];
+		delete gTagAttrs["obj#" + attrName];
+	}
+}
+
+
+// generate an embed and object tag, return as a string
+function _QTGenerate(callingFcnName, generateXHTML, args)
+{
+	// is the number of optional arguments even?
+	if ( args.length < 4 || (0 != (args.length % 2)) )
+	{
+		_QTComplain(callingFcnName, gArgCountErr);
+		return "";
+	}
+
+	// allocate an array, fill in the required attributes with fixed place params and defaults
+	gTagAttrs = new Object();
+	gTagAttrs["src"] = args[0];
+	gTagAttrs["width"] = args[1];
+	gTagAttrs["height"] = args[2];
+	gTagAttrs["classid"] = "clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B";
+		//Impportant note: It is recommended that you use this exact classid in order to ensure a seamless experience for all viewers
+	gTagAttrs["pluginspage"] = "http://www.apple.com/quicktime/download/";
+
+	// set up codebase attribute with specified or default version before parsing args so
+	//  anything passed in will override
+	var activexVers = args[3]
+	if ( (null == activexVers) || ("" == activexVers) )
+		activexVers = "7,3,0,0";
+	gTagAttrs["codebase"] = "http://www.apple.com/qtactivex/qtplugin.cab#version=" + activexVers;
+
+	var	attrName,
+		attrValue;
+
+	// add all of the optional attributes to the array
+	for ( var ndx = 4; ndx < args.length; ndx += 2)
+	{
+		attrName = args[ndx].toLowerCase();
+		attrValue = args[ndx + 1];
+
+		gTagAttrs[attrName] = attrValue;
+
+		if ( ("postdomevents" == attrName) && (attrValue.toLowerCase() != "false") )
+		{
+			gQTEventsEnabled = true;
+			if ( _QTIsMSIE() )
+				gTagAttrs["obj#style"] = "behavior:url(#" + gQTBehaviorID + ")";
+		}
+	}
+
+	// init both tags with the required and "special" attributes
+	var objTag =  '<object '
+					+ _QTAddObjectAttr("classid")
+					+ _QTAddObjectAttr("width")
+					+ _QTAddObjectAttr("height")
+					+ _QTAddObjectAttr("codebase")
+					+ _QTAddObjectAttr("name")
+					+ _QTAddObjectAttr("id")
+					+ _QTAddObjectAttr("tabindex")
+					+ _QTAddObjectAttr("hspace")
+					+ _QTAddObjectAttr("vspace")
+					+ _QTAddObjectAttr("border")
+					+ _QTAddObjectAttr("align")
+					+ _QTAddObjectAttr("class")
+					+ _QTAddObjectAttr("title")
+					+ _QTAddObjectAttr("accesskey")
+					+ _QTAddObjectAttr("noexternaldata")
+					+ _QTAddObjectAttr("obj#style")
+					+ '>'
+					+ _QTAddObjectParam("src", generateXHTML);
+	var embedTag = '<embed '
+					+ _QTAddEmbedAttr("src")
+					+ _QTAddEmbedAttr("width")
+					+ _QTAddEmbedAttr("height")
+					+ _QTAddEmbedAttr("pluginspage")
+					+ _QTAddEmbedAttr("name")
+					+ _QTAddEmbedAttr("id")
+					+ _QTAddEmbedAttr("align")
+					+ _QTAddEmbedAttr("tabindex")
+					+ _QTAddEmbedAttr("title");
+
+	// delete the attributes/params we have already added
+	_QTDeleteTagAttrs("src","width","height","pluginspage","classid","codebase","name","tabindex",
+					"hspace","vspace","border","align","noexternaldata","class","title","accesskey","id","style");
+
+	// and finally, add all of the remaining attributes to the embed and object
+	for ( var attrName in gTagAttrs )
+	{
+		attrValue = gTagAttrs[attrName];
+		if ( null != attrValue )
+		{
+			embedTag += _QTAddEmbedAttr(attrName);
+			objTag += _QTAddObjectParam(attrName, generateXHTML);
+		}
+	}
+
+	// end both tags, we're done
+	return objTag + embedTag + '></em' + 'bed></ob' + 'ject' + '>';
+}
+
+
+// return the object/embed as a string
+function QT_GenerateOBJECTText()
+{
+	var	txt = _QTGenerate("QT_GenerateOBJECTText", false, arguments);
+	if ( _QTShouldInsertBehavior() )
+		txt = _QTGenerateBehavior() + txt;
+	return txt;
+}
+
+function QT_GenerateOBJECTText_XHTML()
+{
+	var	txt = _QTGenerate("QT_GenerateOBJECTText_XHTML", true, arguments);
+	if ( _QTShouldInsertBehavior() )
+		txt = _QTGenerateBehavior() + txt;
+	return txt;
+}
+
+function QT_WriteOBJECT()
+{
+	var	txt = _QTGenerate("QT_WriteOBJECT", false, arguments);
+	if ( _QTShouldInsertBehavior() )
+		document.writeln(_QTGenerateBehavior());
+	document.writeln(txt);
+}
+
+function QT_WriteOBJECT_XHTML()
+{
+	var	txt = _QTGenerate("QT_WriteOBJECT_XHTML", true, arguments);
+	if ( _QTShouldInsertBehavior() )
+		document.writeln(_QTGenerateBehavior());
+	document.writeln(txt);
+}
+
+function QT_GenerateBehaviorOBJECT()
+{
+	return _QTGenerateBehavior();
+}
+
+function QT_ReplaceElementContents()
+{
+	var element = arguments[0];
+	var args = [];
+
+	// copy all other arguments we want to pass through to the fcn
+	for ( var ndx = 1; ndx < arguments.length; ndx++ )
+		args.push(arguments[ndx]);
+
+	var	txt = _QTGenerate("QT_ReplaceElementContents", false, args);
+	if ( txt.length > 0 )
+		element.innerHTML = txt;
+}
+
+
+function QT_ReplaceElementContents_XHTML()
+{
+	var element = arguments[0];
+	var args = [];
+
+	// copy all other arguments we want to pass through to the fcn
+	for ( var ndx = 1; ndx < arguments.length; ndx++ )
+		args.push(arguments[ndx]);
+
+	var	txt = _QTGenerate("QT_ReplaceElementContents_XHTML", true, args);
+	if ( txt.length > 0 )
+		element.innerHTML = txt;
+}
+QïÒ¦{½      ]n¬9]n¬:@Ã)]wæ¸   u    :https://launion.com.mx/plugins/content/jw_allvideos/jw_allvideos/includes/js/quicktimeplayer/ac_quicktime.js?v=4.8.0 necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/2.0 200 OK
+date: Tue, 03 Sep 2019 18:08:57 GMT
+server: Apache
+last-modified: Fri, 09 Feb 2018 16:29:31 GMT
+accept-ranges: bytes
+content-length: 10768
+content-type: application/javascript
+X-Firefox-Spdy: h2
+ original-response-headers date: Tue, 03 Sep 2019 18:08:57 GMT
+server: Apache
+last-modified: Fri, 09 Feb 2018 16:29:31 GMT
+accept-ranges: bytes
+content-length: 10768
+content-type: application/javascript
+X-Firefox-Spdy: h2
+ uncompressed-len 0 net-response-time-onstart 236 net-response-time-onstop 277   *

@@ -1,0 +1,765 @@
+/****************************************************************************
+* JW WMV Player version 1.1, created with M$ Silverlight 1.0
+*
+* This file contains all logic for the JW WMV Player. For a functional setup,
+* the following two files are also needed:
+* - silverlight.js (for instantiating the silverlight plugin)
+* - wmvplayer.xaml (or another XAML skin describing the player graphics)
+*
+* More info: http://www.jeroenwijering.com/?item=JW_WMV_Player
+****************************************************************************/
+if(typeof jeroenwijering == "undefined") {
+	var jeroenwijering = new Object();
+	jeroenwijering.utils = new Object();
+}
+
+/****************************************************************************
+* The player wrapper; loads config variables and starts MVC cycle.
+****************************************************************************/
+jeroenwijering.Player = function(cnt,src,cfg) {
+	this.controller;
+	this.model;
+	this.view;
+	this.configuration = {
+		backgroundcolor:'FFFFFF',
+		windowless:'false',
+		file:'',
+		height:'260',
+		image:'',
+		backcolor:'FFFFFF',
+		frontcolor:'000000',
+		lightcolor:'000000',
+		screencolor:'000000',
+		width:'320',
+		logo:'',
+		overstretch:'false',
+		shownavigation:'true',
+		showstop:'false',
+		showdigits:'true',
+		usefullscreen:'true',
+		usemute:'false',
+		autostart:'false',
+		bufferlength:'3',
+		duration:'0',
+		repeat:'false',
+		sender:'',
+		start:'0',
+		volume:'90',
+		link:'',
+		linkfromdisplay:'false',
+		linktarget:'_self'
+	};
+	for(itm in this.configuration) {
+		if(cfg[itm] != undefined) {
+			if (itm.indexOf('color') > 0) {
+				this.configuration[itm] = cfg[itm].substr(cfg[itm].length-6);
+			} else {
+				this.configuration[itm] = cfg[itm];
+			}
+		}
+	}
+	Silverlight.createObjectEx({
+		source:src,
+		parentElement:cnt,
+		properties:{
+			width:this.configuration['width'],
+			height:this.configuration['height'],
+			version:'1.0',
+			inplaceInstallPrompt:true,
+			isWindowless:this.configuration['windowless'],
+			background:'#'+this.configuration['backgroundcolor']
+		},
+		events:{
+			onLoad:this.onLoadHandler,
+			onError:null
+		},
+		context:this
+	});
+}
+
+jeroenwijering.Player.prototype = {
+	addListener: function(typ,fcn) {
+		this.view.listeners.push({type:typ,func:fcn});
+	},
+
+	getConfig: function() {
+		return this.configuration;
+	},
+
+	onLoadHandler: function(pid,tgt,sdr) {
+		tgt.configuration['sender'] = sdr;
+		tgt.controller = new jeroenwijering.Controller(tgt.configuration);
+		tgt.view = new jeroenwijering.View(tgt.configuration,tgt.controller);
+		tgt.model = new jeroenwijering.Model(tgt.configuration,tgt.controller,tgt.view);
+		tgt.controller.startMVC(tgt.view,tgt.model);
+	},
+
+	sendEvent: function(typ,prm) {
+		switch(typ.toUpperCase()) {
+			case 'LINK':
+				this.controller.setLink();
+				break;
+			case 'LOAD':
+				this.controller.setLoad(prm);
+				break;
+			case 'MUTE':
+				this.controller.setMute();
+				break;
+			case 'PLAY':
+				this.controller.setPlay();
+				break;
+			case 'SCRUB':
+				this.controller.setScrub(prm);
+				break;
+			case 'STOP':
+				this.controller.setStop();
+				break;
+			case 'VOLUME':
+				this.controller.setVolume(prm);
+				break;
+		}
+	}
+}
+
+/****************************************************************************
+* The controller of the player MVC triad, which processes all user input.
+****************************************************************************/
+jeroenwijering.Controller = function(cfg) {
+	this.configuration = cfg;
+}
+
+jeroenwijering.Controller.prototype = {
+	startMVC: function(vie,mdl) {
+		this.view = vie;
+		this.model = mdl;
+		if(this.configuration['usemute'] == 'true') {
+			this.view.onVolume(0);
+			this.view.onMute(true);
+			this.model.goVolume(0);
+		} else {
+			this.view.onVolume(this.configuration['volume']);
+			this.model.goVolume(this.configuration['volume']);
+		}
+		if(this.configuration['autostart'] == 'true') {
+			this.model.goStart();
+		} else {
+			this.model.goPause();
+		}
+	},
+
+	setState: function(old,stt) {
+		this.state = stt;
+		var pos = this.configuration['start'];
+		if(old == 'Closed' && pos > 0) {
+			setTimeout(jeroenwijering.utils.delegate(this,this.setScrub),200,pos);
+		}
+	},
+
+	setLink: function() {
+		if (this.configuration['linktarget'].indexOf('javascript:') == 0) {
+			return Function(this.configuration['linktarget']).apply();
+		} else if (this.configuration['linktarget'] == '_blank') {
+			window.open(this.configuration['link']);
+		} else if (this.configuration['linktarget'] != '') {
+			window.location = this.configuration['link'];
+		}
+	},
+
+	setLoad: function(fil) {
+		if(this.model.state != "Closed") {
+			this.model.goStop();
+		}
+		this.configuration['file'] = fil;
+		if(this.configuration['autostart'] == 'true') {
+			setTimeout(jeroenwijering.utils.delegate(this.model,this.model.goStart),100);
+		}
+	},
+
+	setMute: function() {
+		if(this.configuration['usemute'] == 'true') {
+			this.configuration['usemute'] = 'false';
+			this.model.goVolume(this.configuration['volume']);
+			this.view.onMute(false);
+		} else {
+			this.configuration['usemute'] = 'true';
+			this.model.goVolume(0);
+			this.view.onMute(true);
+		}
+	},
+
+	setPlay: function() {
+		if(this.state == 'Buffering' || this.state == 'Playing') {
+			if(this.configuration['duration'] == 0) {
+				this.model.goStop();
+			} else {
+				this.model.goPause();
+			}
+		} else {
+			this.model.goStart();
+		}
+	},
+
+	setScrub: function(sec) {
+		if(sec < 2) {
+			sec = 0;
+		} else if (sec > this.configuration['duration']-4) {
+			sec = this.configuration['duration']-4;
+		}
+		if(this.state == 'Buffering' || this.state == 'Playing') {
+			this.model.goStart(sec);
+		} else {
+			this.model.goPause(sec);
+		}
+	},
+
+	setStop: function() {
+		this.model.goStop();
+	},
+
+	setVolume: function(pct) {
+		if(pct < 0) { pct = 0; } else if(pct > 100) { pct = 100; }
+		this.configuration['volume'] = Math.round(pct);
+		this.model.goVolume(pct);
+		this.view.onVolume(pct);
+		if(this.configuration['usemute'] == 'true') {
+			this.configuration['usemute'] = 'false';
+			this.view.onMute(false);
+		}
+	},
+
+	setFullscreen: function() {
+		var fss = !this.configuration['sender'].getHost().content.FullScreen;
+		this.configuration['sender'].getHost().content.FullScreen = fss;
+		jeroenwijering.utils.delegate(this.view,this.view.onFullscreen);
+	}
+}
+
+/****************************************************************************
+* The view of the player MVC triad, which manages the graphics.
+****************************************************************************/
+jeroenwijering.View = function(cfg,ctr) {
+	this.configuration = cfg;
+	this.listeners = Array();
+	this.controller = ctr;
+	this.fstimeout;
+	this.fslistener;
+	this.display = this.configuration['sender'].findName("PlayerDisplay");
+	this.controlbar = this.configuration['sender'].findName("PlayerControls");
+	this.configuration['sender'].getHost().content.onResize =
+		jeroenwijering.utils.delegate(this,this.resizePlayer);
+	this.configuration['sender'].getHost().content.onFullScreenChange =
+		jeroenwijering.utils.delegate(this,this.onFullscreen);
+	this.assignColorsClicks();
+	this.resizePlayer();
+}
+
+jeroenwijering.View.prototype = {
+	onBuffer: function(pct) {
+		var snd = this.configuration['sender'];
+		if(pct == 0) {
+			snd.findName("BufferText").Text = null;
+		} else {
+			pct < 10 ? pct = "0"+pct: pct = ""+pct;
+			snd.findName("BufferText").Text = pct;
+		}
+		this.delegate('BUFFER',[pct]);
+	},
+
+	onFullscreen: function(fss) {
+		var snd = this.configuration['sender'];
+		var fst = snd.getHost().content.FullScreen;
+		if(fst) {
+			this.fstimeout = setTimeout(jeroenwijering.utils.delegate(this,
+				this.hideFSControls),2000);
+			this.fslistener = this.display.addEventListener('MouseMove',
+				jeroenwijering.utils.delegate(this,this.showFSControls));
+			snd.findName("FullscreenSymbol").Visibility = "Collapsed";
+			snd.findName("FullscreenOffSymbol").Visibility = "Visible";
+		} else {
+			clearTimeout(this.fstimeout);
+			this.display.removeEventListener("MouseMove",this.fslistener);
+			this.controlbar.Visibility = "Visible";
+			this.display.Cursor = "Hand";
+			snd.findName("FullscreenSymbol").Visibility = "Visible";
+			snd.findName("FullscreenOffSymbol").Visibility = "Collapsed";
+		}
+		this.resizePlayer();
+		this.delegate('FULLSCREEN');
+	},
+
+	showFSControls: function(sdr,arg) {
+		var vbt = sdr.findName('PlayerControls');
+		var yps = arg.GetPosition(vbt).Y;
+		clearTimeout(this.fstimeout);
+		this.controlbar.Visibility = "Visible";
+		this.display.Cursor = "Hand";
+		if(yps < 0) {
+			this.fstimeout = setTimeout(jeroenwijering.utils.delegate(this,
+				this.hideFSControls),2000);
+		}
+	},
+
+	hideFSControls: function() {
+		this.controlbar.Visibility = "Collapsed";
+		this.display.Cursor = "None";
+	},
+
+	onLoad: function(pct) {
+		var snd = this.configuration['sender'];
+		var max = snd.findName("TimeSlider").Width;
+		snd.findName("DownloadProgress").Width = Math.round(max*pct/100);
+		this.delegate('LOAD',[pct]);
+	},
+
+	onMute: function(mut) {
+		var snd = this.configuration['sender'];
+		this.configuration['usemute'] = ''+mut;
+		if(mut) {
+			snd.findName("VolumeHighlight").Visibility = "Collapsed";
+			snd.findName("MuteSymbol").Visibility = "Visible";
+			snd.findName("MuteOffSymbol").Visibility = "Collapsed";
+			if(this.state == 'Playing') {
+				snd.findName("MuteIcon").Visibility = "Visible";
+			}
+		} else {
+			snd.findName("VolumeHighlight").Visibility = "Visible";
+			snd.findName("MuteSymbol").Visibility = "Collapsed";
+			snd.findName("MuteOffSymbol").Visibility = "Visible";
+			snd.findName("MuteIcon").Visibility = "Collapsed";
+		}
+		this.delegate('MUTE');
+	},
+
+	onState: function(old,stt) {
+		var snd = this.configuration['sender'];
+		this.state = stt;
+		if(stt == 'Buffering' || stt == 'Playing' || stt == 'Opening') {
+			snd.findName("PlayIcon").Visibility = "Collapsed";
+			snd.findName("PlaySymbol").Visibility = "Collapsed";
+			snd.findName("PlayOffSymbol").Visibility = "Visible";
+			if (stt=='Playing') {
+				snd.findName("BufferIcon").Visibility = "Collapsed";
+				snd.findName("BufferText").Visibility = "Collapsed";
+				if(this.configuration['usemute'] == 'true') {
+					snd.findName("MuteIcon").Visibility = "Visible";
+				}
+			} else{
+				snd.findName("BufferIcon").Visibility = "Visible";
+				snd.findName("BufferText").Visibility = "Visible";
+			}
+		} else {
+			snd.findName("MuteIcon").Visibility = "Collapsed";
+			snd.findName("BufferIcon").Visibility = "Collapsed";
+			snd.findName("BufferText").Visibility = "Collapsed";
+			snd.findName("PlayOffSymbol").Visibility = "Collapsed";
+			snd.findName("PlaySymbol").Visibility = "Visible";
+			if(this.configuration['linkfromdisplay'] == 'true') {
+				snd.findName("PlayIcon").Visibility = "Collapsed";
+			} else {
+				snd.findName("PlayIcon").Visibility = "Visible";
+			}
+		}
+		try {
+			if(!(old == 'Completed' && stt == 'Buffering') &&
+				!(old == 'Buffering' && stt == 'Paused')) {
+				playerStatusChange(old.toUpperCase(),stt.toUpperCase());
+			}
+		} catch (err) {}
+		this.delegate('STATE',[old,stt]);
+	},
+
+	onTime: function(elp,dur) {
+		var snd = this.configuration['sender'];
+		var snd = this.configuration['sender'];
+		var max = snd.findName("TimeSlider").Width;
+		if(dur > 0) {
+			var pos = Math.round(max*elp/dur);
+			this.configuration['duration'] = dur;
+			snd.findName("ElapsedText").Text = jeroenwijering.utils.timestring(elp);
+			snd.findName("RemainingText").Text = jeroenwijering.utils.timestring(dur-elp);
+			snd.findName("TimeSymbol").Visibility = "Visible";
+			snd.findName("TimeSymbol")['Canvas.Left'] = pos+4;
+			snd.findName("TimeHighlight").Width = pos-2;
+		} else  {
+			snd.findName("TimeSymbol").Visibility = "Collapsed";
+		}
+		this.delegate('TIME',[elp,dur]);
+	},
+
+	onVolume: function(pct) {
+		var snd = this.configuration['sender'];
+		snd.findName("VolumeHighlight").Width = Math.round(pct/5);
+		this.delegate('VOLUME',[pct]);
+	},
+
+	assignColorsClicks: function() {
+		this.display.Cursor = "Hand";
+		this.display.Background = "#FF"+this.configuration['screencolor'];
+		if(this.configuration['linkfromdisplay'] == 'false') {
+			this.display.addEventListener('MouseLeftButtonUp',
+				jeroenwijering.utils.delegate(this.controller,
+				this.controller.setPlay));
+		} else {
+			this.display.addEventListener('MouseLeftButtonUp',
+				jeroenwijering.utils.delegate(this.controller,
+				this.controller.setLink));
+			this.display.findName("PlayIcon").Visibility = "Collapsed";
+		}
+		if(this.configuration['logo'] != '') {
+			this.display.findName('OverlayCanvas').Visibility = "Visible";
+			this.display.findName('OverlayLogo').ImageSource =
+				this.configuration['logo'];
+		}
+		this.controlbar.findName("ControlbarBack").Fill =
+			"#FF"+this.configuration['backcolor'];
+		this.assignButton('Play',this.controller.setPlay);
+		this.assignButton('Stop',this.controller.setStop);
+		this.configuration['sender'].findName('ElapsedText').Foreground =
+			"#FF"+this.configuration['frontcolor'];
+		this.assignSlider('Time',this.changeTime);
+		this.configuration['sender'].findName('DownloadProgress').Fill =
+			"#FF"+this.configuration['frontcolor'];
+		this.configuration['sender'].findName('RemainingText').Foreground =
+			"#FF"+this.configuration['frontcolor'];
+		this.assignButton('Link',this.controller.setLink);
+		this.assignButton('Fullscreen',this.controller.setFullscreen);
+		this.assignButton('Mute',this.controller.setMute);
+		this.assignSlider('Volume',this.changeVolume);
+	},
+
+	assignButton: function(btn,act) {
+		var el1 = this.configuration['sender'].findName(btn+'Button');
+		el1.Cursor = "Hand";
+		el1.addEventListener('MouseLeftButtonUp',
+			jeroenwijering.utils.delegate(this.controller,act));
+		el1.addEventListener('MouseEnter',
+			jeroenwijering.utils.delegate(this,this.rollOver));
+		el1.addEventListener('MouseLeave',
+			jeroenwijering.utils.delegate(this,this.rollOut));
+		this.configuration['sender'].findName(btn+'Symbol').Fill =
+			"#FF"+this.configuration['frontcolor'];
+		try {
+			this.configuration['sender'].findName(btn+'OffSymbol').Fill =
+				"#FF"+this.configuration['frontcolor'];
+		} catch(e) {}
+	},
+
+	assignSlider: function(sld,act) {
+		var el1 = this.configuration['sender'].findName(sld+'Button');
+		el1.Cursor = "Hand";
+		el1.addEventListener('MouseLeftButtonUp',
+			jeroenwijering.utils.delegate(this,act));
+		el1.addEventListener('MouseEnter',
+			jeroenwijering.utils.delegate(this,this.rollOver));
+		el1.addEventListener('MouseLeave',
+			jeroenwijering.utils.delegate(this,this.rollOut));
+		this.configuration['sender'].findName(sld+'Slider').Fill =
+			"#FF"+this.configuration['frontcolor'];
+		this.configuration['sender'].findName(sld+'Highlight').Fill =
+			"#FF"+this.configuration['frontcolor'];
+		this.configuration['sender'].findName(sld+'Symbol').Fill =
+			"#FF"+this.configuration['frontcolor'];
+	},
+
+	delegate: function(typ,arg) {
+		for(var i=0; i<this.listeners.length; i++) {
+			if(this.listeners[i]['type'].toUpperCase() == typ) {
+				this.listeners[i]['func'].apply(null,arg);
+			}
+		}
+	},
+
+	rollOver: function(sdr) {
+		var str = sdr.Name.substr(0,sdr.Name.length-6);
+		this.configuration['sender'].findName(str+'Symbol').Fill =
+			"#FF"+this.configuration['lightcolor'];
+		try {
+			this.configuration['sender'].findName(str+'OffSymbol').Fill =
+				"#FF"+this.configuration['lightcolor'];
+		} catch(e) {}
+	},
+
+	rollOut: function(sdr) {
+		var str = sdr.Name.substr(0,sdr.Name.length-6);
+		this.configuration['sender'].findName(str+'Symbol').Fill =
+			"#FF"+this.configuration['frontcolor'];
+		try {
+			this.configuration['sender'].findName(str+'OffSymbol').Fill =
+				"#FF"+this.configuration['frontcolor'];
+		} catch(e) {}
+	},
+
+	changeTime: function(sdr,arg) {
+		var tbt = sdr.findName('TimeSlider');
+		var xps = arg.GetPosition(tbt).X;
+		var sec = Math.floor(xps/tbt.Width*this.configuration['duration']);
+		this.controller.setScrub(sec);
+	},
+
+	changeVolume: function(sdr,arg) {
+		var vbt = sdr.findName('VolumeButton');
+		var xps = arg.GetPosition(vbt).X;
+		this.controller.setVolume(xps*5);
+	},
+
+	resizePlayer: function() {
+		var wid = this.configuration['sender'].getHost().content.actualWidth;
+		var hei = this.configuration['sender'].getHost().content.actualHeight;
+		var fss = this.configuration['sender'].getHost().content.FullScreen;
+		if(this.configuration['shownavigation'] == 'true') {
+			if(fss == true) {
+				this.resizeDisplay(wid,hei);
+				this.controlbar['Canvas.Left'] = Math.round(wid/2-250);
+				this.resizeControlbar(500,hei-this.controlbar.Height-16);
+				this.controlbar.findName('ControlbarBack')['Opacity'] = 0.5;
+			} else {
+				this.resizeDisplay(wid,hei-20);
+				this.controlbar['Canvas.Left'] = 0;
+				this.resizeControlbar(wid,hei-this.controlbar.Height);
+				this.controlbar.findName('ControlbarBack')['Opacity'] = 1;
+			}
+		} else {
+			this.resizeDisplay(wid,hei);
+		}
+	},
+
+	resizeDisplay: function(wid,hei) {
+		this.stretchElement('PlayerDisplay',wid,hei);
+		this.stretchElement('VideoWindow',wid,hei);
+		this.stretchElement('PlaceholderImage',wid,hei);
+		this.centerElement('PlayIcon',wid,hei);
+		this.centerElement('MuteIcon',wid,hei);
+		this.centerElement('BufferIcon',wid,hei);
+		this.centerElement('BufferText',wid,hei);
+		this.display.findName('OverlayCanvas')['Canvas.Left'] = wid -
+			this.display.findName('OverlayCanvas').Width - 10;
+		this.display.Visibility = "Visible";
+	},
+
+	resizeControlbar: function(wid,yps,alp) {
+		this.controlbar['Canvas.Top'] = yps;
+		this.stretchElement('PlayerControls',wid);
+		this.stretchElement('ControlbarBack',wid);
+		this.placeElement('PlayButton',0);
+		var lft = 17;
+		this.placeElement('VolumeButton',wid-24);
+		this.placeElement('MuteButton',wid-37);
+		var rgt = 37;
+		if(this.configuration['showstop'] == 'true') {
+			this.placeElement('StopButton',lft);
+			lft += 17;
+		} else {
+			this.controlbar.findName('StopButton').Visibility="Collapsed";
+		}
+		if(this.configuration['usefullscreen'] == 'true') {
+			rgt += 18;
+			this.placeElement('FullscreenButton',wid-rgt);
+		} else {
+			this.controlbar.findName('FullscreenButton').Visibility =
+				"Collapsed";
+		}
+		if(this.configuration['link'] != '') {
+			rgt += 18;
+			this.placeElement('LinkButton',wid-rgt);
+		} else {
+			this.controlbar.findName('LinkButton').Visibility="Collapsed";
+		}
+		if(this.configuration['showdigits'] == 'true' && wid-rgt-lft> 160) {
+			rgt += 35;
+			this.controlbar.findName('RemainingButton').Visibility="Visible";
+			this.controlbar.findName('ElapsedButton').Visibility="Visible";
+			this.placeElement('RemainingButton',wid-rgt);
+			this.placeElement('ElapsedButton',lft);
+			lft +=35;
+		} else {
+			this.controlbar.findName('RemainingButton').Visibility =
+				"Collapsed";
+			this.controlbar.findName('ElapsedButton').Visibility="Collapsed";
+		}
+		this.placeElement('TimeButton',lft);
+		this.stretchElement('TimeButton',wid-lft-rgt);
+		this.stretchElement('TimeShadow',wid-lft-rgt);
+		this.stretchElement('TimeStroke',wid-lft-rgt);
+		this.stretchElement('TimeFill',wid-lft-rgt);
+		this.stretchElement('TimeSlider',wid-lft-rgt-10);
+		this.stretchElement('DownloadProgress',wid-lft-rgt-10);
+		var tsb = this.configuration['sender'].findName('TimeSymbol');
+		this.stretchElement('TimeHighlight',tsb['Canvas.Left']-5);
+		this.controlbar.Visibility = "Visible";
+	},
+
+	centerElement: function(nam,wid,hei) {
+		var elm = this.configuration['sender'].findName(nam);
+		elm['Canvas.Left'] = Math.round(wid/2 - elm.Width/2);
+		elm['Canvas.Top'] = Math.round(hei/2 - elm.Height/2);
+	},
+
+	stretchElement: function(nam,wid,hei) {
+		var elm = this.configuration['sender'].findName(nam);
+		elm.Width = wid;
+		if (hei != undefined) { elm.Height = hei; }
+	},
+
+	placeElement: function(nam,xps,yps) {
+		var elm = this.configuration['sender'].findName(nam);
+		elm['Canvas.Left'] = xps;
+		if(yps) { elm['Canvas.Top'] = yps; }
+	}
+}
+
+/****************************************************************************
+* The model of the player MVC triad, which stores all playback logic.
+****************************************************************************/
+jeroenwijering.Model = function(cfg,ctr,vie) {
+	this.configuration = cfg;
+	this.controller = ctr;
+	this.view = vie;
+	this.video = this.configuration['sender'].findName("VideoWindow");
+	this.preview = this.configuration['sender'].findName("PlaceholderImage");
+	var str = {
+		'true':'UniformToFill',
+		'false':'Uniform',
+		'fit':'Fill',
+		'none':'None'
+	}
+	this.state = this.video.CurrentState;
+	this.timeint;
+	this.video.Stretch = str[this.configuration['overstretch']];
+	this.preview.Stretch = str[this.configuration['overstretch']];
+	this.video.BufferingTime =
+		jeroenwijering.utils.spanstring(this.configuration['bufferlength']);
+	this.video.AutoPlay = true;
+	this.video.AddEventListener("CurrentStateChanged",
+		jeroenwijering.utils.delegate(this,this.stateChanged));
+	this.video.AddEventListener("MediaEnded",
+		jeroenwijering.utils.delegate(this,this.mediaEnded));
+	this.video.AddEventListener("BufferingProgressChanged",
+		jeroenwijering.utils.delegate(this,this.bufferChanged));
+	this.video.AddEventListener("DownloadProgressChanged",
+		jeroenwijering.utils.delegate(this,this.downloadChanged));
+	if(this.configuration['image'] != '') {
+		this.preview.Source = this.configuration['image'];
+	}
+}
+
+jeroenwijering.Model.prototype = {
+	goPause: function(sec) {
+		this.video.pause();
+		if(!isNaN(sec)) {
+			this.video.Position = jeroenwijering.utils.spanstring(sec);
+		}
+		this.timeChanged();
+	},
+
+	goStart: function(sec) {
+		this.video.Visibility = 'Visible';
+		this.preview.Visibility = 'Collapsed';
+		if(this.state == "Closed") {
+			this.video.Source = this.configuration['file'];
+		} else {
+			this.video.play();
+		}
+		if(!isNaN(sec)) {
+			this.video.Position = jeroenwijering.utils.spanstring(sec);
+		}
+	},
+
+	goStop: function() {
+		this.video.Visibility = 'Collapsed';
+		this.preview.Visibility = 'Visible';
+		this.goPause(0);
+		this.video.Source = 'null';
+		this.view.onBuffer(0);
+		clearInterval(this.timeint);
+	},
+
+	goVolume: function(pct) {
+		this.video.Volume = pct/100;
+	},
+
+	stateChanged: function() {
+		var stt = this.video.CurrentState;
+		if(stt != this.state) {
+			this.controller.setState(this.state,stt);
+			this.view.onState(this.state,stt);
+			this.state = stt;
+			this.configuration['duration'] =
+				Math.round(this.video.NaturalDuration.Seconds*10)/10;
+			if(stt != "Playing" && stt != "Buffering" && stt != "Opening") {
+				clearInterval(this.timeint);
+			} else {
+				this.timeint = setInterval(jeroenwijering.utils.delegate(
+					this,this.timeChanged),100);
+			}
+		}
+	},
+
+	mediaEnded: function() {
+		if(this.configuration['repeat'] == 'true') {
+			this.goStart(0);
+		} else {
+			this.state = 'Completed';
+			this.view.onState(this.state,'Completed');
+			this.video.Visibility = 'Collapsed';
+			this.preview.Visibility = 'Visible';
+			this.goPause(0);
+		}
+	},
+
+	bufferChanged: function() {
+		var bfr = Math.round(this.video.BufferingProgress*100);
+		this.view.onBuffer(bfr);
+	},
+
+	downloadChanged: function() {
+		var dld = Math.round(this.video.DownloadProgress*100);
+		this.view.onLoad(dld);
+	},
+
+	timeChanged: function() {
+		var pos = Math.round(this.video.Position.Seconds*10)/10;
+		this.view.onTime(pos,this.configuration['duration']);
+	}
+}
+
+/****************************************************************************
+* Some utility functions.
+****************************************************************************/
+jeroenwijering.utils.delegate = function(obj,fcn) {
+	return function() {
+		return fcn.apply(obj,arguments);
+	}
+}
+jeroenwijering.utils.timestring = function(stp) {
+	var hrs = Math.floor(stp/3600);
+	var min = Math.floor(stp%3600/60);
+	var sec = Math.round(stp%60);
+	var str = "";
+	sec > 9 ? str += sec: str +='0'+sec;
+	min > 9 ? str = min+":"+str: str='0'+min+":"+str;
+	hrs > 0 ? str = hrs+":"+str: null;
+	return str;
+}
+jeroenwijering.utils.spanstring = function(stp) {
+	var hrs = Math.floor(stp/3600);
+	var min = Math.floor(stp%3600/60);
+	var sec = Math.round(stp%60*10)/10;
+	var str = hrs+':'+min+':'+sec;
+	return str;
+}
+¬î\‹ÿ›      ]n¬9]n¬:@Ã)]wæ¸   l    :https://launion.com.mx/plugins/content/jw_allvideos/jw_allvideos/includes/js/wmvplayer/wmvplayer.js?v=4.8.0 necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/2.0 200 OK
+date: Tue, 03 Sep 2019 18:08:57 GMT
+server: Apache
+last-modified: Fri, 09 Feb 2018 16:29:31 GMT
+accept-ranges: bytes
+content-length: 23928
+content-type: application/javascript
+X-Firefox-Spdy: h2
+ original-response-headers date: Tue, 03 Sep 2019 18:08:57 GMT
+server: Apache
+last-modified: Fri, 09 Feb 2018 16:29:31 GMT
+accept-ranges: bytes
+content-length: 23928
+content-type: application/javascript
+X-Firefox-Spdy: h2
+ uncompressed-len 0 net-response-time-onstart 219 net-response-time-onstop 332   ]x
