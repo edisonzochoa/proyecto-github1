@@ -13,11 +13,11 @@ Diagrama de bloques en gnuradio de un sistema back-to-back para detectar la pote
 
 
 
-Diagrama de bloques waterprof deteccion de ruido
+Diagrama de bloques waterfall deteccion de ruido
 
 ! [alt tex](https://user-images.githubusercontent.com/47603954/64459940-cccf1d80-d0be-11e9-8eab-44f07b01e18e.PNG)
 
 
 
-Diagrama de flujo waterprof
+Diagrama de flujo waterfall
 ! [alt tex](https://user-images.githubusercontent.com/47603954/64459940-cccf1d80-d0be-11e9-8eab-44f07b01e18e.PNG)
