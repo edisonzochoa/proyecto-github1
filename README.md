@@ -8,16 +8,18 @@ para conocer la potencia que recibe una antena microcinta se utiliza un sistema 
 Repositorio de scripts de proyecto-github1
 
 Diagrama de bloques en gnuradio de un sistema back-to-back para detectar la potencia recibida por la antena microcinta.
-
 ! [alt tex](https://user-images.githubusercontent.com/47603954/64459834-8bd70900-d0be-11e9-94b4-5a9f4bd2a3fe.PNG)
 
 
 
 Diagrama de bloques waterfall deteccion de ruido
-
 ! [alt tex](https://user-images.githubusercontent.com/47603954/64459940-cccf1d80-d0be-11e9-8eab-44f07b01e18e.PNG)
 
 
 
 Diagrama de flujo waterfall
-! [alt tex](https://user-images.githubusercontent.com/47603954/64459940-cccf1d80-d0be-11e9-8eab-44f07b01e18e.PNG)
+! [alt tex](https://user-images.githubusercontent.com/47603954/64460001-ed977300-d0be-11e9-9c0d-2b75362b1595.PNG)
+
+
+Diagrama de bloques generador de señales
+! [alt tex](https://user-images.githubusercontent.com/47603954/64460001-ed977300-d0be-11e9-9c0d-2b75362b1595.PNG)
