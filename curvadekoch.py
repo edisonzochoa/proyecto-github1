@@ -1,3 +1,4 @@
+archivo modificado
 from math import sin, cos, pi
 import matplotlib.pyplot as plt
 import matplotlib
