@@ -23,3 +23,5 @@ Diagrama de flujo waterfall
 
 Diagrama de bloques generador de señales
 ! [alt tex](https://user-images.githubusercontent.com/47603954/64459910-b923b700-d0be-11e9-98d2-4b90bfe9124f.PNG)
+
+
