@@ -1,1 +1,484 @@
+## funcion exportar patron de radiacion y exportar a cst
+1 main.m
 
+clc;
+clear all;
+path='D:\matlab_space\CST\RESULT\';
+% the cst project name
+cstproject='D:\CST_Space\Layout\Phone\Phone Model MIMO6.cst';
+% all the farfield frequency
+farfieldfreq=[1.775,1.75,1.8,1.85,1.825,];
+exportName='Phone6';
+
+cst = actxserver('CSTStudio.application');
+mws = invoke(cst,'OpenFile',cstproject);
+
+Port=invoke(mws,'Port'); 
+% get the portNum of the CST project
+portNum=invoke(Port,'StartPortNumberIteration');
+% get the all monitors of the CST project
+monitor=invoke(mws,'Monitor');
+monitorNum=invoke(monitor,'GetNumberOfMonitors');
+monitorName=string(zeros(1,monitorNum));
+monitorFreq=zeros(1,monitorNum);
+% get all minotor frequency
+for i=1:monitorNum
+    monitorName(i)=invoke(monitor,'GetMonitorNameFromIndex',num2str(i-1));
+    if contains(monitorName(i),'farfield')
+        substr=split(monitorName(i),["=",")"]);
+        monitorFreq(i)=substr(2);
+    end
+end
+
+% export farfield
+for fre=farfieldfreq
+    % Determine if the far field frequency and monitor frequency are the same
+    if ismember(fre,monitorFreq)
+        for port=1:portNum
+            ExportEPattern(mws,path,exportName,fre,port)
+        end
+    else
+        disp(fre)
+        disp("No such frequency in CST project ")
+    end
+end
+
+% export stonetouch
+ExportTouchstone(mws,strcat(path,exportName))
+
+invoke(mws,'Quit');
+disp('no error, export data finished.....')
+
+2 ExportEPattern.m
+
+function ExportEPattern(mws,path,exportName,frequency,port)
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+% freq=str2double(frequency)
+freq=frequency;
+FarfieldPlot = invoke(mws,'FarfieldPlot');
+% far field plot setting
+invoke(FarfieldPlot,'Plottype','3D');
+invoke(FarfieldPlot,'Vary','angle2');
+invoke(FarfieldPlot,'Theta','90');
+invoke(FarfieldPlot,'Phi','90');
+invoke(FarfieldPlot,'Step','5');
+invoke(FarfieldPlot,'Step2','5');
+invoke(FarfieldPlot,'SetLockSteps','False');
+invoke(FarfieldPlot,'SetPlotRangeOnly','True');
+invoke(FarfieldPlot,'SetThetaStart','0');
+invoke(FarfieldPlot,'SetThetaEnd','180');
+invoke(FarfieldPlot,'SetPhiStart','0');
+invoke(FarfieldPlot,'SetPhiEnd','360');
+invoke(FarfieldPlot,'SetTheta360','False');
+invoke(FarfieldPlot,'SymmetricRange','False');
+invoke(FarfieldPlot,'SetTimeDomainFF','False');
+invoke(FarfieldPlot,'SetFrequency',num2str(freq));
+invoke(FarfieldPlot,'SetTime','0');
+invoke(FarfieldPlot,'SetColorByValue','True');    
+invoke(FarfieldPlot,'DrawStepLines','False');
+invoke(FarfieldPlot,'DrawIsoLongitudeLatitudeLines','False');    
+invoke(FarfieldPlot,'ShowStructure','False');  
+invoke(FarfieldPlot,'SetStructureTransparent','False');
+invoke(FarfieldPlot,'SetFarfieldTransparent','False');   
+invoke(FarfieldPlot,'SetSpecials','enablepolarextralines');  
+invoke(FarfieldPlot,'SetPlotMode','Epattern'); % wo gai guo
+invoke(FarfieldPlot,'Distance','1');  
+invoke(FarfieldPlot,'UseFarfieldApproximation','True');
+invoke(FarfieldPlot,'SetScaleLinear','True');
+invoke(FarfieldPlot,'SetLogRange','40');
+invoke(FarfieldPlot,'SetLogNorm','0');
+invoke(FarfieldPlot,'DBUnit','0');
+invoke(FarfieldPlot,'EnableFixPlotMaximum','False');     
+invoke(FarfieldPlot,'SetFixPlotMaximumValue','1'); 
+invoke(FarfieldPlot,'SetInverseAxialRatio','False');
+invoke(FarfieldPlot,'SetAxesType','user');
+invoke(FarfieldPlot,'SetAntennaType','unknown');
+invoke(FarfieldPlot,'Phistart','1.000000e+000','0.000000e+000','0.000000e+000');  
+invoke(FarfieldPlot,'Thetastart','0.000000e+000','0.000000e+000','1.000000e+000');
+invoke(FarfieldPlot,'PolarizationVector','0.000000e+000','1.000000e+000','0.000000e+000');
+invoke(FarfieldPlot,'SetCoordinateSystemType','spherical');    
+invoke(FarfieldPlot,'SetAutomaticCoordinateSystem','True');    
+invoke(FarfieldPlot,'SetPolarizationType','Linear');
+invoke(FarfieldPlot,'SlantAngle', '0.000000e+000');
+invoke(FarfieldPlot,'Origin','bbox');
+invoke(FarfieldPlot,'Userorigin','0.000000e+000','0.000000e+000','0.000000e+000');
+invoke(FarfieldPlot,'SetUserDecouplingPlane','False');
+invoke(FarfieldPlot,'UseDecouplingPlane','False'); 
+invoke(FarfieldPlot,'DecouplingPlaneAxis','X');
+invoke(FarfieldPlot,'DecouplingPlanePosition','0.000000e+000');
+invoke(FarfieldPlot,'LossyGround','False');  
+invoke(FarfieldPlot,'GroundEpsilon','1'); 
+invoke(FarfieldPlot,'GroundKappa','0');
+invoke(FarfieldPlot,'EnablePhaseCenterCalculation','False');
+invoke(FarfieldPlot,'SetPhaseCenterAngularLimit','3.000000e+001'); 
+invoke(FarfieldPlot,'SetPhaseCenterComponent','boresight'); 
+invoke(FarfieldPlot,'SetPhaseCenterPlane','both');
+invoke(FarfieldPlot,'ShowPhaseCenter','True');
+invoke(FarfieldPlot,'StoreSettings');
+%export data from CST
+exportpath = strcat(path,exportName,'.txt');
+SelectTreeItem = invoke(mws,'SelectTreeItem',char(strcat('Farfields\farfield',strcat({' '}, '(f=',num2str(freq),')'),
+strcat({' '}, '[',num2str(port),']')))); 
+invoke(FarfieldPlot,'ASCIIExportAsSource', exportpath);
+% read Read Image data
+[phi,theta, Re_E_Theta, Im_E_Theta, Re_E_Phi, Im_E_Phi]=textread(exportpath,'%n%n%n%n%n%n','headerlines',31);
+% RI to Abs Phase
+abs_E_Theta=(Re_E_Theta.^2+Im_E_Theta.^2).^(1/2);
+phase_E_Theta=atan2d(Im_E_Theta,Re_E_Theta);
+phase_E_Theta=phase_E_Theta+(phase_E_Theta<0)*360;
+abs_E_Phi=(Re_E_Phi.^2+Im_E_Phi.^2).^(1/2);
+phase_E_Phi=atan2d(Im_E_Phi,Re_E_Phi);
+phase_E_Phi=phase_E_Phi+(phase_E_Phi<0)*360;
+Abs=(abs_E_Theta.^2+abs_E_Phi.^2).^(1/2);
+
+E_Theta=Re_E_Theta+1j.*Im_E_Theta;
+E_Phi=Re_E_Phi+1j.*Im_E_Phi;
+up=(abs(E_Theta)).^2+(abs(E_Phi)).^2+abs(E_Theta.^2+E_Phi.^2);
+down=(abs(E_Theta)).^2+(abs(E_Phi)).^2-abs(E_Theta.^2+E_Phi.^2);
+AxiaRatio=(up./down).^(1/2);
+
+% Write Abs Phase
+fn=strcat(path,exportName,'_P',num2str(port),'_F',num2str(freq*1000),'.txt');
+fp=fopen(fn,'wt');
+fprintf(fp,'Theta [deg.]  Phi   [deg.]  Abs(V   )[V     ]   Abs(Theta)[V     ]  Phase(Theta)[deg.]  Abs(Phi  )[V     ]  
+Phase(Phi  )[deg.]  Ax.Ratio[      ]    \n');
+fprintf(fp,'-----------------------------------------------------------------------------------------------------------
+-------------------------------------------\n');
+len=length(theta);
+for i=1:len-37
+    fprintf(fp,'%8.3f%20.3f%20.3e%20.3e%20.3f%20.3e%20.3f%20.3e\n',theta(i),phi(i),Abs(i),abs_E_Theta(i),phase_E_Theta(i),
+abs_E_Phi(i),phase_E_Phi(i),AxiaRatio(i));
+end
+fclose(fp);
+end
+
+3 ExportTouchstone.m
+
+function ExportTouchstone(mws,exportpath)
+
+TOUCHSTONE = invoke(mws,'TOUCHSTONE');
+invoke(TOUCHSTONE,'Reset');
+invoke(TOUCHSTONE,'FileName',exportpath);
+invoke(TOUCHSTONE,'Impedance','50');
+invoke(TOUCHSTONE,'Format','ri');
+invoke(TOUCHSTONE,'FrequencyRange','full');
+invoke(TOUCHSTONE,'Renormalize','True');
+invoke(TOUCHSTONE,'UseARResults','False');
+invoke(TOUCHSTONE,'SetNSamples','1001');
+invoke(TOUCHSTONE,'Write');
+
+end    
+
+
+
+### simulacion monopolo ###
+% Copyright (C) 2018  Symeon Symeonidis, Stefanos Tsantilas, Stelios Mitilineos
+% simos421@gmail.com, steftsantilas@gmail.com, smitil@gmail.com
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+
+addpath(genpath('...\cst api'));
+
+cst = actxserver('CSTStudio.application');
+mws = cst.invoke('NewMWS');
+
+Geometry = 'mm';
+Frequency = 'GHz';
+Time = 'ns';
+TemperatureUnit = 'Kelvin';
+Voltage = 'V';
+Current = 'A';
+Resistance = 'Ohm';
+Conductance  = 'S';
+Capacitance = 'PikoF';
+Inductance = 'NanoH';
+
+CstDefineUnits(mws,Geometry, Frequency, Time, TemperatureUnit, Voltage, Current, Resistance, Conductance, Capacitance, Inductance)
+CstMeshInitiator(mws)
+
+
+CstDefineFrequencyRange(mws,0.5,4)
+minfrequency = 0.5;
+x='expanded open';
+CstDefineOpenBoundary(mws,minfrequency,x,x,x,x,x,x)
+XminSpace = 0;
+XmaxSpace = 0;
+YminSpace = 0;
+YmaxSpace = 0;
+ZminSpace = 0;
+ZmaxSpace = 0;
+CstDefineBackroundMaterial(mws,XminSpace,XmaxSpace, YminSpace, YmaxSpace, ZminSpace, ZmaxSpace)
+
+Name = 'Groundplane';
+component = 'component1';
+material = 'PEC';
+Xrange = [-40 40];
+Yrange = [-40 40];
+Zrange = [0 2];
+
+Cstbrick(mws, Name, component, material, Xrange, Yrange, Zrange)
+
+Name = 'Conductor';
+OuterRadius = 2;
+InnerRadius = 0;
+Xcenter = 0;
+Ycenter = 0;
+Zrange = [8 38];
+
+Cstcylinder(mws, Name, component, material, 'Z', OuterRadius, InnerRadius, Xcenter, Ycenter, Zrange)
+
+PortNumber = 1;
+SetP1 = [0 0 2];
+SetP2 = [0 0 8];
+
+CstDiscretePort(mws,PortNumber,SetP1,SetP2)
+
+
+monitorindex = 2.25;
+CstDefineEfieldMonitor(mws,strcat('e-field', num2str(monitorindex)), monitorindex)
+CstDefineFarfieldMonitor(mws,strcat('Farfield',num2str(monitorindex)), monitorindex)
+CstSaveProject(mws)
+
+CstDefineTimedomainSolver(mws,-30)
+
+
+exportpath = '...\cst api\NameofyourFile';%NameofyourFile should be the same with the name of the file of line 90 bellow
+
+format = 'db';
+
+CstExportTouchstone(mws,exportpath, format)
+data = read(rfdata.data,'NameofyourFile.s1p');
+freq = data.Freq;
+s_params = extract(data,'S_PARAMETERS',50);
+spar = s_params(1,:);
+s11 = 20*log10(sqrt(real(spar).^2 + imag(spar).^2));
+plot(freq,s11); grid on; 
+
+
+####simulacion antena microcinta ##
+% Copyright (C) 2018 Symeon Symeonidis, Stefanos Tsantilas, Stelios Mitilineos
+% simos421@gmail.com, steftsantilas@gmail.com, smitil@gmail.com
+% Este programa es software libre: puede redistribuirlo y / o modificarlo
+% bajo los términos de la Licencia Pública General GNU publicada por
+% Free Software Foundation, ya sea la versión 3 de la Licencia, o
+% (a su elección) cualquier versión posterior.
+% 
+% Este programa se distribuye con la esperanza de que sea útil,
+% pero SIN NINGUNA GARANTÍA; sin siquiera la garantía implícita de
+% COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO EN PARTICULAR. Ver el
+% GNU General Public License para más detalles.
+
+
+
+% Este es un tutorial paso a paso sobre cómo usar la API CST-Matlab
+% Los pasos que verá aquí se pueden aplicar en todos los ejemplos que están
+% encontrado en la carpeta de ejemplo
+
+
+
+% En primer lugar, debe incluir la ruta principal donde se encuentran los archivos m de
+% api se encuentran en su computadora, usando el comando addpath (genpath ('your_path_here'))
+% en lugar de solo addpath ('your_path_here') ayuda
+% mucho porque también incluye subcarpetas.
+
+addpath (genpath ( ' ... \ cst api ' )); % Por ejemplo, mi ruta es: addpath (genpath ('C: \ Users \ simos \ Dropbox \ cst api'));
+
+
+
+% Este comando se usa para iniciar la aplicación CST, como puede ver aquí, está asignado a
+% de la variable cst.
+cst = actxserver ( ' CSTStudio.application ' );
+
+% Este comando se usa para abrir un nuevo proyecto CST. De ahora en adelante este mws
+La variable % se usará para operar cualquier función de matlab que se use para
+% de control de CST
+mws = cst.invoke ( ' NewMWS ' );
+
+
+% Establece unidades predeterminadas para su proyecto. mm, GHz, etc., puede abrir
+% CSTDefaultUnits para ver las selecciones exactas o si quieres tengo
+Función % CSTDefineUnits en la carpeta de inicio de la API que puede usar para asignar sus propias unidades
+CstDefaultUnits (mws) 
+
+% El barrido de frecuencia de su simulación. Aquí en GHz, recuerde que el
+% CSTDefaulttUnits de antes usa GHz
+CstDefineFrequencyRange (mws, 1.5 , 3.5 )
+
+% Inicia la malla automática
+CstMeshInitiator (mws)
+
+% Este define sus límites, aquí estamos usando expandido abierto desde
+% nuestra estructura no es algún tipo de guía de onda o celda unitaria
+
+% Recuerde que debe definir su límite de acuerdo con su
+% de frecuencia más baja de simulación (frecuencia mínima), aquí es 1.5GHz
+Xmin = ' expandido abierto ' ;
+Xmax = ' expandido abierto ' ;
+Ymin = ' expandido abierto ' ;
+Ymax = ' abierto expandido ' ;
+Zmin = ' expandido abierto ' ;
+Zmax = ' expandido abierto ' ;
+frecuencia mínima = 1.5 ;
+CstDefineOpenBoundary (mws, minfrequency, Xmin, Xmax, Ymin, Ymax, Zmin, Zmax)
+
+% Esta función define el material de fondo, aquí estamos usando el
+% de asignación predeterminada de CST que es vacío (permitividad = permeabilidad = 1)
+% Una vez más, XminSpace, Xmaxspace, etc. son las asignaciones predeterminadas de CST
+% para antenas
+XminSpace = 0 ;
+XmaxSpace = 0 ;
+YminSpace = 0 ;
+YmaxSpace = 0 ;
+ZminSpace = 0 ;
+ZmaxSpace = 0 ;
+CstDefineBackroundMaterial (mws, XminSpace, XmaxSpace, YminSpace, YmaxSpace, ZminSpace, ZmaxSpace)
+
+% Estas dos funciones son funciones de propiedades de material. Aquí hay un
+% pequeño truco: no puedes llamar y asignar un material de la biblioteca CST usando matlab o cualquier tipo de código (además de PEC).
+% Es un poco más complicado, necesita ver las propiedades de
+% material deseado en la biblioteca CST y haga una función matlab con todas estas propiedades, nombre el material y llámelo en su código con ese nombre.
+% Este es un proceso doloroso pero he logrado replicar algunos de los más
+% importante Puede encontrarlos en la carpeta de materiales de la API, una vez que
+% entiendo cómo funciona mi código, siéntase libre de agregar más materiales a eso
+% carpeta
+
+% Aquí estoy llamando a cobre recocido con pérdida y FR4 con pérdida, después de estos dos
+función % Puedo escribir sus nombres como una cadena y asignarlos a cualquier
+% de forma deseada
+CstCopperAnnealedLossy (mws)
+CstFR4lossy (mws)
+
+W = 28,45 ; % De ancho del parche
+L = 28,45 ; % De longitud del parche
+Fi = 9 ; % De profundidad del corte dentro de la microstrip
+Wf = 1.137 ; % De ancho de la línea de alimentación
+Gpf = 1 ; % Ancho del espacio vacío
+Lg = 2 * L; % De longitud del suelo
+Wg = 2 * W; % Ancho del suelo
+Ht = 0,035 ; % Altura del cobre
+Hs = 1.6 ; % De altura del sustrato
+
+% Cstbrick crea un ladrillo para el plano de tierra. Observe cómo solo necesito hacer esto:
+% material = 'Cobre (recocido)'; y el material del ladrillo será
+% cobre, eso es porque ya llamé CstCopperAnnealedLossy (mws) antes
+Nombre = ' Plano de tierra ' ;
+componente = ' componente1 ' ;
+material = ' Cobre (recocido) ' ;
+Xrange = [- 0.5 * Wg 0.5 * Wg];
+Yrange = [- 0.5 * Lg 0.5 * Lg];
+Zrange = [ 0 Ht];
+Cstbrick (mws, Nombre, componente, material, Xrange, Yrange, Zrange)
+
+% Esto crea el sustrato
+Nombre = ' Sustrato ' ;
+componente = ' componente1 ' ;
+material = ' FR-4 (con pérdida) ' ;
+Xrange = [- 0.5 * Wg 0.5 * Wg];
+Yrange = [- 0.5 * Lg 0.5 * Lg];
+Zrange = [Ht Ht + Hs];
+Cstbrick (mws, Nombre, componente, material, Xrange, Yrange, Zrange)
+
+% Este crea el parche
+Nombre = ' Parche ' ;
+componente = ' componente1 ' ;
+material = ' Cobre (recocido) ' ;
+Xrange = [-W / 2 W / 2 ];
+Yrange = [-L / 2 L / 2 ];
+Zrange = [Ht + Hs Ht + Hs + Ht];
+Cstbrick (mws, Nombre, componente, material, Xrange, Yrange, Zrange)
+
+% Aquí estoy cortando el parche para que se ajuste a la línea de alimentación
+Nombre = ' Espacio vacío ' ;
+componente = ' componente1 ' ;
+material = ' Cobre (recocido) ' ;
+Xrange = [- ((Wf / 2 ) + Gpf) ((Wf / 2 ) + Gpf)];
+Yrange = [-L / 2 + Fi -L / 2 ];
+Zrange = [Ht + Hs Ht + Hs + Ht];
+Cstbrick (mws, Nombre, componente, material, Xrange, Yrange, Zrange)
+
+% Esto resta dos componentes
+componente1 = ' componente1: parche ' ;
+componente2 = ' componente1: espacio vacío ' ;
+CstSubtract (mws, componente1, componente2)
+
+% Esto crea la línea de alimentación
+Nombre = ' FeedLine ' ;
+componente = ' componente1 ' ;
+material = ' Cobre (recocido) ' ;
+Xrange = [-Wf / 2 Wf / 2 ];
+Yrange = [-L / 2 + Fi -Lg / 2 ];
+Zrange = [Ht + Hs Ht + Hs + Ht];
+Cstbrick (mws, Nombre, componente, material, Xrange, Yrange, Zrange)
+
+% Esto agrega la línea de alimentación al parche
+componente1 = ' componente1: parche ' ;
+componente2 = ' componente1: línea de alimentación ' ;
+CstAdd (mws, componente1, componente2)
+
+% Aquí elijo el sustrato para asignar el puerto, hay más de una forma
+% para asignar un puerto en su geometría, es decir, puede usar coordenadas y no
+% de selecciones, creo que las coordenadas son más fáciles porque las imágenes se generan de acuerdo
+% a su diseño. es decir, id = 3; es cómo CST nombra el área que estoy seleccionando
+% porque hay al menos 3 caras en mi diseño pero eso no es estándar,
+% depende de su diseño. Mejor usar coordenadas para estar seguro.
+Nombre = ' Sustrato ' ;
+id = 3 ;
+CstPickFace (mws, Nombre, id)
+
+% Aquí estoy asignando un puerto de guía de onda (creo que tengo la mayoría de los puertos CST posibles como funciones en mi API)
+PortNumber = 1 ;
+Xrange = [- 36  36 ];
+Yrange = [- 36 - 36 ];
+Zrange = [ 0.035  1.635 ];
+XrangeAdd = [ 3 * Wf 3 * Wf];
+YrangeAdd = [ 0  0 ];
+ZrangeAdd = [Ht + Hs 4 * Hs];
+Coordenadas = ' Selecciones ' ;
+Orientación = ' positivo ' ;
+CstWaveguidePort (mws, PortNumber, Xrange, Yrange, Zrange, XrangeAdd, YrangeAdd, ZrangeAdd, Coordinates, Orientation)
+
+% Aquí estoy asignando monitores para el campo e, campo h y campo lejano a 2,45 GHz
+CstDefineEfieldMonitor (mws, strcat ( ' e-field ' , ' 2.45 ' ), 2.45 );
+CstDefineHfieldMonitor (mws, strcat ( ' h-field ' , ' 2.45 ' ), 2.45 );
+CstDefineFarfieldMonitor (mws, strcat ( ' Farfield ' , ' 2.45 ' ), 2.45 );
+
+
+% Guarda el proyecto
+CstSaveProject (mws)
+
+% Define el solucionador e inicia la simulación (también tengo un solucionador de dominio de frecuencia y un solucionador integral)
+% -40 corresponde a la precisión
+CstDefineTimedomainSolver (mws, - 40 )
+
+% Aquí debe definir la ruta que desea que sean sus parámetros
+% exportado y el nombre de su archivo. Los míos por ejemplo son:
+% exportpath = 'C: \ Users \ simos \ Dropbox \ cst api \ microstrip';
+% filenameTXT = 'microstrip';
+exportpath = ' ... \ microstrip ' ;
+filenameTXT = ' microstrip ' ;
+
+% Aquí el S11 se exporta como un archivo .txt y se traza
+CstExportSparametersTXT (mws, exportpath)
+[Frecuencia, Sparametter] = CstLoadSparametterTXT (filenameTXT);
+plot (Frecuencia, Sparametter, ' - ' ); rejilla encendida ;
+Leyenda ( ' S11 (dB) ' )
+título ( ' antena de parche a 2.45GHz ' )
+xlabel ( ' Frecuencia (GHz) ' )
+
+
+% En las carpetas de la API encontrará muchas más funciones que hacen todo tipo de cosas en CST.
+% Como has visto en este tutorial, el nombre de cada función describe mucho lo que hace
+% Siempre recuerde primero llamar a la función de su material deseado antes de asignarlo a un
+% geometría
+% ¡ Siéntete libre de experimentar con ellos! ¡Que te diviertas!
+
+###
