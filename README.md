@@ -16,6 +16,7 @@ Repositorio de scripts de proyecto-github1
 
 
 
+
 # Diagrama de bloques waterfall deteccion de ruido
 ! [alt tex](https://user-images.githubusercontent.com/47603954/64459940-cccf1d80-d0be-11e9-8eab-44f07b01e18e.PNG)
 
