@@ -4,7 +4,7 @@ para conocer la potencia que recibe una antena microcinta se utiliza un sistema 
 
 
 
-![alt text](https://user-images.githubusercontent.com/47603954/64296932-cbc0b380-cf39-11e9-91a4-7dd217cedd3e.png)
+![alt text](https:///home/ed/Imágenes/matlab+cst.jpg)
 Repositorio de scripts de proyecto-github1
 
 Diagrama de bloques en gnuradio de un sistema back-to-back para detectar la potencia recibida por la antena microcinta.
