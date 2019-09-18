@@ -11,11 +11,14 @@ Repositorio de scripts de proyecto-github1
 ![alt text](https://user-images.githubusercontent.com/47603954/64974930-79ee2680-d873-11e9-94a8-f502ce1488d6.gif)
 
 # Utilizando el software GNURadio para detectar frecuencia y anchos de banda.
+! [alt tex](https://user-images.githubusercontent.com/47603954/64459834-8bd70900-d0be-11e9-94b4-5a9f4bd2a3fe.PNG)
+
+#Introduccion a GNURadio desde python 
 #! / Usr / bin / env Python 
 ####################################### ########### 
 # Gnuradio Python Flow Graph 
 # Título: Tutorial Three 
-# Generado: Mié Mar 12 15:35:18 2014 
+# Tomado de:https://wiki.gnuradio.org/index.php/Guided_Tutorial_GNU_Radio_in_Python
 ############# ###################################### 
 
 desde  gnuradio  import  analog 
@@ -68,7 +71,7 @@ if  __name__  ==  '__main__' :
     raw_input ( 'Presione Enter para salir:' ) 
     tb . parada () 
     tb . esperar ()
-! [alt tex](https://user-images.githubusercontent.com/47603954/64459834-8bd70900-d0be-11e9-94b4-5a9f4bd2a3fe.PNG)
+
 
 
 
